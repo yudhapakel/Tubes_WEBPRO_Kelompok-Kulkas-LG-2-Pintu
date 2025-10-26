@@ -1,0 +1,84 @@
+:root{
+  --brand:#F2B94B;
+  --ink:#0f172a;
+  --muted:#64748b;
+  --bg:#ffffff;
+  --panel:#f8fafc;
+  --line:#e2e8f0;
+  --nav:#223846;
+  --nav-ink:#dbeafe;
+  --success:#65a30d;
+  --danger:#0b2a3a;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+  --radius:14px;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+a{color:#1e293b;text-decoration:none}
+
+/* NAVBAR */
+.nav{position:sticky;top:0;z-index:50;background:var(--nav);color:var(--nav-ink);border-bottom:1px solid rgba(255,255,255,.08)}
+.wrap{max-width:1120px;margin:auto;padding:0 20px}
+.nav-inner{height:64px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#ffd88a)}
+.brand-name{font-weight:700;letter-spacing:.4px}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{color:var(--nav-ink);opacity:.9;font-size:14px}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.btn{border:1px solid var(--line);background:#fff;color:#0f172a;padding:10px 14px;border-radius:10px;font-size:14px;cursor:pointer}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.26)}
+
+/* LAYOUT */
+.main{padding:36px 0 56px}
+h1{font-size:32px;margin:10px 0 26px}
+
+.grid{display:grid;grid-template-columns:1fr 380px;gap:36px}
+@media (max-width: 980px){.grid{grid-template-columns:1fr}}
+
+/* FORM LEFT */
+.field{margin-bottom:22px}
+.label{display:block;font-size:14px;margin:0 0 6px;color:var(--muted)}
+.input,.select,.textarea{width:100%;padding:14px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;font:inherit}
+.textarea{min-height:92px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media (max-width: 720px){.row{grid-template-columns:1fr}}
+
+/* custom select */
+.select-wrap{position:relative}
+.select{appearance:none;-webkit-appearance:none;-moz-appearance:none}
+.select-wrap::after{content:"";position:absolute;right:12px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:7px solid #0f172a;pointer-events:none}
+
+/* DIVIDER */
+.vr{width:1px;background:var(--line)}
+@media (max-width: 980px){.vr{display:none}}
+
+/* UPLOAD CARD */
+.card{border:1px solid var(--line);border-radius:var(--radius);background:#fff;box-shadow:var(--shadow);padding:16px}
+.drop{border:2px dashed #cbd5e1;border-radius:12px;background:var(--panel);padding:24px;text-align:center}
+.drop input{display:none}
+.hint{font-size:12px;color:var(--muted);margin-top:10px}
+
+.terms{display:flex;align-items:center;gap:10px;margin:14px 0}
+.actions{display:flex;gap:12px}
+.btn--success{background:var(--success);color:#fff;border-color:transparent}
+.btn--dark{background:var(--danger);color:#fff;border-color:transparent}
+.btn[disabled]{opacity:.6;cursor:not-allowed}
+
+.progress{height:8px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin-top:12px}
+.bar{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#a3e635)}
+
+/* FOOTER */
+.footer{background:var(--nav);color:#cbd5e1;margin-top:56px;border-top:1px solid rgba(255,255,255,.08)}
+.footer .wrap{padding:28px 20px}
+.footer-top{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center}
+@media (max-width:720px){.footer-top{grid-template-columns:1fr}}
+.copy{font-size:12px;opacity:.8;margin-top:12px}
+
+/* MODAL */
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.6);display:none;align-items:center;justify-content:center;padding:20px}
+.modal[open]{display:flex}
+.modal-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:28px 26px;max-width:420px;width:100%;text-align:center}
+.modal-card h2{margin:12px 0 8px}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:86px;height:86px;border-radius:50%;background:#eafbe8;border:4px solid #c8f7c3;margin:auto}
+.badge svg{width:48px;height:48px}

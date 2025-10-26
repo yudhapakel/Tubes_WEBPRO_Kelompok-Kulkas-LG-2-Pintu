@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CV.TRILOKA SEJAHTERA — Upload Dokumen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="nav">
+    <div class="wrap nav-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">CV.TRILOKA SEJAHTERA</span>
+      </div>
+      <div class="nav-links" aria-label="Navigasi">
+        <a href="#">About</a>
+        <a href="#">Payment</a>
+        <a href="#">Notification</a>
+        <a href="#">My Profile</a>
+        <a href="#">Document Verification</a>
+      </div>
+      <div class="nav-actions">
+        <button class="btn btn--ghost">Sign in</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== MAIN ===== -->
+  <main class="wrap main" id="content">
+    <h1>Isi formulir ini</h1>
+
+    <div class="grid" role="region" aria-label="Form upload dokumen">
+      <!-- LEFT: FORM FIELDS -->
+      <form id="form" novalidate>
+        <div class="field">
+          <label class="label" for="nama">Nama lengkap</label>
+          <input class="input" id="nama" name="nama" placeholder="Nama lengkap" required />
+        </div>
+        <div class="field">
+          <label class="label" for="alamat">Alamat</label>
+          <textarea class="textarea" id="alamat" name="alamat" placeholder="Nama jalan, RT/RW, dsb" required></textarea>
+        </div>
+        <div class="field">
+          <label class="label" for="telepon">Nomor telepon</label>
+          <input class="input" id="telepon" name="telepon" type="tel" placeholder="08xxxxxxxxxx" required />
+        </div>
+        <div class="field">
+          <label class="label" for="jasa">Jasa yang dipilih</label>
+          <div class="select-wrap">
+            <select class="select" id="jasa" name="jasa" required>
+              <option value="" disabled selected>Pilih jasa</option>
+              <option>Impor barang</option>
+              <option>Jasa gudang</option>
+              <option>Jasa kurir</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label class="label" for="kota">Kota</label>
+            <input class="input" id="kota" name="kota" placeholder="Kota" required />
+          </div>
+          <div class="field">
+            <label class="label" for="prov">Provinsi</label>
+            <div class="select-wrap">
+              <select class="select" id="prov" name="prov" required>
+                <option value="" disabled selected>Pilih provinsi</option>
+                <option>Jawa Barat</option>
+                <option>DKI Jakarta</option>
+                <option>Jawa Tengah</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label class="label" for="negara">Negara</label>
+            <div class="select-wrap">
+              <select class="select" id="negara" name="negara" required>
+                <option value="" disabled selected>Pilih negara</option>
+                <option>Indonesia</option>
+                <option>Malaysia</option>
+                <option>Singapura</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label" for="kodepos">Kode pos</label>
+            <input class="input" id="kodepos" name="kodepos" inputmode="numeric" pattern="[0-9]{5}" placeholder="5 digit" required />
+          </div>
+        </div>
+      </form>
+
+      <!-- DIVIDER -->
+      <div class="vr" aria-hidden="true"></div>
+
+      <!-- RIGHT: UPLOAD CARD -->
+      <aside>
+        <div class="card">
+          <h3 style="margin:0 0 10px">Unggah dokumen anda</h3>
+          <div class="drop" id="drop">
+            <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png" />
+            <p><strong>Tarik & letakkan</strong> file ke sini atau <label for="file" style="text-decoration:underline;cursor:pointer">unggah dokumen</label></p>
+            <p class="hint">* Hanya .pdf/.jpg/.png. Maks 5 MB per file.</p>
+            <div class="progress" hidden><div class="bar" id="bar"></div></div>
+            <p class="hint" id="fileInfo"></p>
+          </div>
+
+          <div class="terms">
+            <input type="checkbox" id="agree" />
+            <label for="agree">Saya setuju dengan <a href="#">Syarat dan ketentuan</a></label>
+          </div>
+          <div class="actions">
+            <button id="submitBtn" class="btn btn--success" disabled>Submit</button>
+            <button id="cancelBtn" class="btn btn--dark" type="button">Cancel</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer-top">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">CV.TRILOKA SEJAHTERA</span>
+        </div>
+        <div style="justify-self:end;display:flex;gap:12px;align-items:center">
+          <span aria-hidden>🌐</span>
+          <span aria-hidden>🐦</span>
+          <span aria-hidden>📷</span>
+          <span aria-hidden>▶️</span>
+        </div>
+      </div>
+      <p class="copy">© 2025 CV. Triloka Sejahtera — Seluruh hak cipta. Informasi ini hanya contoh untuk keperluan tugas.</p>
+    </div>
+  </footer>
+
+  <!-- ===== MODAL ===== -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-card">
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="12" cy="12" r="10" stroke="#22c55e" stroke-width="2" fill="#d1fae5"/>
+          <path d="M7 12.5l3 3 7-7" stroke="#15803d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2 id="modalTitle">Upload berhasil</h2>
+      <p style="color:var(--muted);margin:0 0 14px">Dokumen kamu tersimpan. Kamu bisa kembali ke dashboard.</p>
+      <button class="btn btn--success" id="toDashboard">Kembali ke dashboard</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
