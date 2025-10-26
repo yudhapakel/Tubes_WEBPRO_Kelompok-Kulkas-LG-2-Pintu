@@ -1,0 +1,121 @@
+/* Ganti font default ke Poppins */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f6f7;
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    color: #D4B06A;
+    font-weight: 600; /* Lebih tebal agar bagus */
+}
+
+/* Header */
+header {
+    background-color: #1F3B4D;
+    padding: 15px 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+    padding: 6px 12px;
+    font-weight: 500;
+}
+
+header nav a.active {
+    background-color: white;
+    color: #0d2b3e;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+header nav .signout {
+    background: white;
+    color: #0d2b3e;
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+/* Konten utama */
+.container {
+    padding: 30px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.payment-wrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.payment-method, .payment-detail {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+    min-width: 350px;
+    font-weight: 400;
+}
+
+.payment-method h3, .payment-detail h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="month"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.other-methods img {
+    width: 100px;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.btn-pay {
+    background-color: #1F3B4D;
+    color: white;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-pay:hover {
+    background-color: #144861;
+}

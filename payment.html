@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo"> CV.TRILOKA SEJAHTERA</div>
+    <nav>
+        <a href="#" class="active">Payment</a>
+        <a href="#">Notification</a>
+        <a href="#">My Profile</a>
+        <a href="#">Document Verification</a>
+        <a href="#" class="signout">Sign out</a>
+    </nav>
+</header>
+
+<div class="container">
+    <div class="title">Pilih Metode Pembayaran</div>
+
+    <div class="payment-wrapper">
+        <!-- SECTION KIRI -->
+        <div class="payment-method">
+            <h3>💳 Credit/Debit Card</h3>
+            <div class="form-group">
+                <label>Nomor Rekening</label>
+                <input type="text" placeholder="XXX-XXXX-XXXXX-XXXX" id="rekening">
+            </div>
+            <div class="form-group">
+                <label>Nama Bank</label>
+                <input type="text" placeholder="BCA" id="bank">
+            </div>
+            <div class="form-group">
+                <label>Berlaku Sampai</label>
+                <input type="month" id="expired">
+            </div>
+
+            <div class="other-methods">
+                <p><strong>Metode Pembayaran Lain:</strong></p>
+                <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="MasterCard">
+                <img src="https://seeklogo.com/images/V/visa-logo-6F4057663D-seeklogo.com.png" alt="Visa">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZWFiMzAwIiBkPSJNNy41IDN2Mi4yNUg1LjI1VjcuNWgxLjEyNWEuNTYuNTYgMCAwIDEgLjU2My41NjN2Ny44NzVhLjU2My41NjMgMCAwIDEtLjU2My41NjJoLS41NjJsLS41NjMgMi4yNUg3LjVWMjFoMi4yNXYtMi4yNWgxLjY4OFYyMWgyLjI1di0yLjI1aDEuMTI0di0uMDA5YzIuMi0uMTM0IDMuOTM4LTEuODQyIDMuOTM4LTMuOTI4YzAtMS41ODktMS4wMDgtMi45NTgtMi40Ni0zLjU4Yy44MTUtLjYxOSAxLjMzNS0xLjU1OCAxLjMzNS0yLjYwOGMwLTIuMDY4LTIuMjUtMy4zNzUtMy45MzctMy4zNzVWM2gtMi4yNXYyLjI1SDkuNzVWM3ptMi4yNSAxMy41di0zLjkzN2gzLjY1NmExLjk3IDEuOTcgMCAwIDEgMCAzLjkzN3ptMC05aDIuODEzYTEuNjg3IDEuNjg3IDAgMSAxIDAgMy4zNzVIOS43NXoiLz48L3N2Zz4=" alt="BCA">
+            </div>
+        </div>
+
+        <!-- SECTION KANAN -->
+        <div class="payment-detail">
+            <h3>Detail Pembayaran</h3>
+            <div class="detail-box">
+                <p><strong>Jasa:</strong> Jasa Pengiriman Batu Bata</p>
+                <p><strong>Total:</strong> Rp 2.500.000,00</p>
+            </div>
+            <div class="detail-box">
+                <p><strong>Nama:</strong> Ujang Sarden</p>
+                <p><strong>Email:</strong> ujangsaren@example.com</p>
+                <p><strong>Alamat:</strong> Jalan Indah Sulawesi Tengah</p>
+            </div>
+            <button class="btn-pay" onclick="payNow()">Bayar Sekarang</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script> <!-- Hubungkan JavaScript -->
+</body>
+</html>
