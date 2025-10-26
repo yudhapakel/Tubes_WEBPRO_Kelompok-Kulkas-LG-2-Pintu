@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Login</title>
+    <link rel="stylesheet" href="src/css/login.css">
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="image-panel"></div>
+
+        <div class="form-panel">
+            <div class="form-content">
+                <h1>Welcome!</h1>
+                
+                <div class="tabs">
+                    <span class="tab active" id="login-tab">Login</span>
+                    <span class="tab" id="signup-tab">SignUp</span>
+                </div>
+
+                <form id="login-form">
+                    <div class="input-group">
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="login-password" placeholder="Enter Password" required>
+                        <span class="toggle-password">
+                            <img src="src/assets/eye-closed.svg" id="login-toggle-icon" alt="Toggle Password">
+                        </span>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                    <p class="form-link">Forgot Password?</p> 
+                </form>
+
+                <form id="signup-form" style="display: none;">
+                    <div class="input-group">
+                        <input type="text" id="fullname" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" id="signup-email" placeholder="Email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" id="signup-password" placeholder="Password" required>
+                        <span class="toggle-password">
+                            <img src="src/assets/eye-closed.svg" id="signup-toggle-icon" alt="Toggle Password">
+                        </span>
+                    </div>
+                    <button type="submit" class="login-btn">Create Account</button>
+                    <p class="form-link">
+                        Already have an account? <span id="switch-to-login" class="link-primary">Login</span>
+                    </p>
+                </form>
+
+                <div class="divider">Or</div>
+
+                <div class="social-login">
+                    <img src="src/assets/google-icon.svg" alt="Google Login" class="social-icon">
+                    <img src="src/assets/facebook-icon.svg" alt="Facebook Login" class="social-icon">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="src/js/Login.js"></script>
+</body>
+</html>
