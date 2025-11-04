@@ -53,23 +53,22 @@
             <input type="text" value="00000000">
         </div>
 
-       <div class="button-row">
-            <a href="dashboard.html" class="btn btn-save">Save</a>
-            <a href="login.html" class="btn btn-logout">Logout</a>
+
+        <button id="saveBtn" class="btn btn-save">Save</button>
+        <button id="logoutBtn" class="btn btn-logout">Logout</button>
+
+        <!-- Modal Sukses -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <h3>Profil Disimpan!</h3>
+                <p>Perubahan profil Anda telah berhasil disimpan.</p>
+                <button id="closeModalBtn" class="btn btn-save">OK</button>
+            </div>
         </div>
 
-    </div>
 
-    <div class="modal" id="successModal">
-        <div class="modal-content">
-            <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" alt="Check">
-            <h2>Berhasil</h2>
-            <button class="btn-dashboard" onclick="closeModal()">Kembali ke Dashboard</button>
-        </div>
-    </div>
 
-    <script src="script_profile.js"></script>
+        <script src="script_profile.js"></script>
 </body>
 
 </html>
-
