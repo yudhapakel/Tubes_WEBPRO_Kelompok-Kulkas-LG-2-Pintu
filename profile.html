@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Profile - CV. Triloka Sejahtera</title>
+    <link rel="stylesheet" href="css/style_profile.css">
+</head>
+
+<body>
+
+    <div class="banner"></div>
+
+    <div class="profile-container">
+        <div class="profile-photo-section">
+            <img id="profilePreview" src="https://i.pravatar.cc/120" alt="Profile Photo">
+            <input type="file" id="profileInput" accept="image/*" hidden>
+            <button class="btn-change-photo" id="changePhotoBtn">Ubah Foto</button>
+        </div>
+
+        <h3 class="username">YudzJaw009</h3>
+
+        <div class="form-row">
+            <div class="form-group" style="flex:1">
+                <label>First Name</label>
+                <input type="text" value="Kilan">
+            </div>
+            <div class="form-group" style="flex:1">
+                <label>Last Name</label>
+                <input type="text" value="James">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" value="kilanjames@gmail.com">
+        </div>
+
+        <div class="form-group">
+            <label>No HP</label>
+            <input type="text" value="00000000">
+        </div>
+
+
+        <button id="saveBtn" class="btn btn-save">Save</button>
+        <button id="logoutBtn" class="btn btn-logout">Logout</button>
+
+        <!-- Modal Sukses -->
+        <div id="successModal" class="modal">
+            <div class="modal-content">
+                <h3>Profil Disimpan!</h3>
+                <p>Perubahan profil Anda telah berhasil disimpan.</p>
+                <button id="closeModalBtn" class="btn btn-save">OK</button>
+            </div>
+        </div>
+
+
+
+        <script src="js/script_profile.js"></script>
+</body>
+
+</html>

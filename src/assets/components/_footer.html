@@ -1,0 +1,42 @@
+<footer class="main-footer">
+    <div class="footer-content">
+        <div class="footer-left">
+            <div class="footer-logo">
+                <span class="logo-icon">◆</span> CV.TRILOKA SEJAHTERA
+            </div>
+        </div>
+        <div class="footer-right">
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <span>Karawang</span>
+                </div>
+                <div class="contact-item">
+                    <span>(123) 456-7890</span>
+                </div>
+                <div class="contact-item">
+                    <span>(123) 456-7890</span>
+                </div>
+            </div>
+            <div class="footer-social">
+                <span>Social Media</span>
+                <a href="#">f</a>
+                <a href="#">t</a>
+                <a href="#">in</a>
+                <a href="#">G+</a>
+                <a href="#">...</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="footer-bottom-links">
+            <a href="#">TENTANG KITA</a>
+            <a href="#">KONTAK KAMI</a>
+            <a href="#">BANTUAN</a>
+            <a href="#">PRIVASI</a>
+            <a href="#">DISCLAIMER</a>
+        </div>
+        <div class="footer-copyright">
+            © 2025 CV. Triloka Sejahtera | CV. Triloka Sejahtera adalah badan usaha... (dan seterusnya)
+        </div>
+    </div>
+</footer>

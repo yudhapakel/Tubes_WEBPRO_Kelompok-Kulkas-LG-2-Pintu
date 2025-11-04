@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifikasi - CV. TRILOKA SEJAHTERA</title>
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <script src="js/script.js"></script>
+    
+    <div id="navbar-placeholder"></div> 
+    
+    <main class="container">
+        <h1 class="main-title">Notifikasi</h1>
+        
+        <div class="tabs">
+            <a href="#" class="tab-active" data-tab-target="#document-section">Semua Dokumen</a>
+            <a href="#" data-tab-target="#payment-section">Pembayaran</a>
+        </div>
+
+        <div id="document-section" class="tab-content active-content">
+            <table class="notification-table">
+                <thead>
+                    <tr>
+                        <th>DOCUMENT ID</th>
+                        <th>STATUS</th>
+                        <th class="text-right">CREATION DATE</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable-row">
+                        <td>Doc_1</td>
+                        <td><span class="status verified">Verified</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="clickable-row">
+                        <td>Doc_2</td>
+                        <td><span class="status not-verified">Not Verified</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="clickable-row">
+                        <td>Doc_3</td>
+                        <td><span class="status declined">Declined</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="clickable-row">
+                        <td>Doc_4</td>
+                        <td><span class="status verified">Verified</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="payment-section" class="tab-content">
+             <table class="notification-table">
+                <thead>
+                    <tr>
+                        <th>INVOICE ID</th>
+                        <th>STATUS</th>
+                        <th class="text-right">CREATION DATE</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="clickable-row">
+                        <td>Invoice_1</td>
+                        <td><span class="status verified">Lunas</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="clickable-row">
+                        <td>Invoice_2</td>
+                        <td><span class="status not-verified">Belum dibayar</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="clickable-row">
+                        <td>Invoice_3</td>
+                        <td><span class="status declined">Tenggat waktu</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                    <tr class="clickable-row">
+                        <td>Invoice_4</td>
+                        <td><span class="status verified">Lunas</span></td>
+                        <td class="text-right">Mar 23, 2022, 13:00 PM</td>
+                        <td class="text-center"><i class="fas fa-chevron-down"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </main>
+
+    <div id="detailModal" class="modal">
+        <div class="modal-content">
+            
+            <div id="detailFormContent" class="modal-body" style="display:none;">
+                <h2>Detail Formulir</h2>
+                
+                <div class="detail-grid">
+                    <div class="label">Nama Lengkap</div> <div class="value">Ujang Sarden</div>
+                    <div class="label">Alamat</div> <div class="value">Bandung Bojongsoang</div>
+                    <div class="label">Nomor Telepon</div> <div class="value">08987654321</div>
+                    <div class="label">Jasa yang dipilih</div> <div class="value">General konstruksi</div>
+                    <div class="label">Kota</div> <div class="value">Bandung</div>
+                    <div class="label">Provinsi</div> <div class="value">Jawa Barat</div>
+                    <div class="label">Kode Pos</div> <div class="value">40310</div>
+                </div>
+
+                <hr class="modal-divider">
+
+                <h3>Preview document</h3>
+                <p class="doc-status"><i class="fas fa-exclamation-circle"></i> Belum di Verifikasi</p>
+
+                <div class="doc-links">
+                    <a href="#" class="doc-link-item">Dokumen Perizinan pengiriman batu kapur</a>
+                </div>
+
+                <div class="modal-actions">
+                    <div class="action-group-left">
+                        <button id="viewDocumentBtn" class="btn-action primary">Lihat</button> 
+                        <a href="dokumen_asli.pdf" download="Dokumen Perizinan CV. TRILOKA SEJAHTERA.pdf" class="btn-action secondary">Download</a>
+                    </div>
+                    <button class="btn-action tertiary close-button-bottom">Kembali</button>
+                </div>
+            </div>
+
+            <div id="documentPreviewContent" class="modal-body document-preview-mode" style="display:none;">
+                
+                <iframe id="pdfViewer" src="src/document.pdf" width="100%" height="70vh" frameborder="0">
+                    Browser Anda tidak mendukung iFrame. Silakan download PDF.
+                </iframe>
+
+                <div class="modal-actions preview-actions">
+                    <button class="btn-action tertiary close-button-bottom">Kembali</button>
+                </div>
+            </div>
+
+            <div id="paymentDetailContent" class="modal-body" style="display:none;">
+                <h2>Detail pembayaran</h2>
+                
+                <div class="detail-grid">
+                    <div class="label">Total amount</div>
+                    <div class="value">Rp. 2.500.000.000.00</div>
+
+                    <div class="label">Open amount</div>
+                    <div class="value">Rp. 400.000.000</div>
+
+                    <div class="label">Tax</div>
+                    <div class="value">Rp. 48.000.000</div>
+                    
+                    <div class="label">Due Date</div>
+                    <div class="value">10/08/2025</div>
+
+                    <div class="label">Paid On</div>
+                    <div class="value">BRI Virtual Bank</div>
+
+                    <div class="label">Costumer avg delay</div>
+                    <div class="value">10 Days</div>
+                </div>
+
+                <hr class="modal-divider">
+
+                <h3>Preview Invoice</h3>
+                
+                <div class="payment-status-badge verified-status-badge">
+                    <i class="fas fa-check-circle"></i> Lunas
+                </div>
+
+                <div class="doc-links invoice-link-group">
+                    <i class="fas fa-file-pdf pdf-icon"></i> 
+                    <a href="invoice.pdf" target="_blank" class="doc-link-item">Invoice</a>
+                </div>
+
+                <div class="modal-actions payment-actions">
+                    <div class="action-group-left">
+                        <a href="invoice.pdf" target="_blank" class="btn-action primary">Lihat</a>
+                        <a href="invoice.pdf" download="Invoice-Pay_001.pdf" class="btn-action secondary">Download</a>
+                    </div>
+                    <button class="btn-action tertiary close-button-bottom">Kembali</button>
+                </div>
+            </div>
+            </div>
+    </div>
+    <div id="footer-placeholder"></div>
+</body>
+</html>
