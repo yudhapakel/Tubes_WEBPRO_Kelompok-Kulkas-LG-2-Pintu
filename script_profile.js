@@ -1,32 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const fileInput = document.getElementById("fileInput");
-  const profileImage = document.getElementById("profileImage");
-  const saveBtn = document.getElementById("saveBtn");
-  const logoutBtn = document.getElementById("logoutBtn");
+// --- GANTI FOTO PROFIL ---
+const profileInput = document.getElementById("profileInput");
+const profilePreview = document.getElementById("profilePreview");
+const changePhotoBtn = document.getElementById("changePhotoBtn");
 
-  // Ganti foto profil
-  fileInput.addEventListener("change", (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        profileImage.src = event.target.result;
-      };
-      reader.readAsDataURL(file);
-    }
-  });
+changePhotoBtn.addEventListener("click", () => {
+  profileInput.click();
+});
 
-  // Saat tombol Save diklik
-  saveBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    alert("Profil berhasil disimpan!");
-    window.location.href = "dashboard.html"; // pindah ke dashboard
-  });
+profileInput.addEventListener("change", () => {
+  const file = profileInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      profilePreview.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
 
-  // Saat tombol Logout diklik
+
+const saveBtn = document.getElementById("saveBtn");
+const modal = document.getElementById("successModal");
+const closeModalBtn = document.getElementById("closeModalBtn"); 
+
+saveBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  modal.style.display = "flex"; 
+});
+
+function closeModal() {
+  modal.style.display = "none";
+  window.location.href = "dashboard.html"; 
+}
+
+if (closeModalBtn) {
+  closeModalBtn.addEventListener("click", closeModal);
+}
+
+const logoutBtn = document.getElementById("logoutBtn");
+if (logoutBtn) {
   logoutBtn.addEventListener("click", (e) => {
     e.preventDefault();
     alert("Anda telah logout!");
     window.location.href = "login.html";
   });
-});
+}
