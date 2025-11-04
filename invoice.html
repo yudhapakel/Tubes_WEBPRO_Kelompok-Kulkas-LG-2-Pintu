@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    
+    
+    <link rel="stylesheet" href="css/invoice.css">
+</head>
+<body>
+
+<div class="invoice-container">
+
+    <div class="left-section">
+        <h2>Invoice</h2>
+
+        <div class="status-box">
+            <span class="overdue">Overdue</span>
+            <span class="delay-text">18 Days Delay</span>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <p>Total Amount</p>
+                <strong>Rp. 2.500.000.000.00</strong>
+            </div>
+            <div>
+                <p>Open Amount</p>
+                <strong>Rp. 400.000.000.00</strong>
+            </div>
+            <div>
+                <p>Tax</p>
+                <strong>Rp. 48.000.000.00</strong>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div>
+                <p>Due Date</p>
+                <strong>10/08/2025</strong>
+            </div>
+            <div>
+                <p>Paid On</p>
+                <strong>BRI Virtual Bank</strong>
+            </div>
+            <div>
+                <p>Customer Av Delay</p>
+                <strong>10 Days</strong>
+            </div>
+        </div>
+
+        <h4>Credit Note</h4>
+        <div class="credit-box">
+            <strong>A4M34-TV-K4M</strong> | Rp. 448.000.000.00
+            <p>Created on: 31/07/2025</p>
+        </div>
+    </div>
+
+    <div class="right-section">
+        <p class="invoice-number">A4M34-TV-K4M</p>
+
+        <h2>INVOICE</h2>
+        <p><strong>Date:</strong> 31 July, 2025</p>
+
+        <div class="address-grid">
+            <div>
+                <strong>Billed to:</strong>
+                <p>Ujang Sarden<br>Jalan Indah Sulawesi Tengah<br>ujangsarden@example.com</p>
+            </div>
+            <div>
+                <strong>From:</strong>
+                <p>Ujang Sarden<br>Jalan Indah Sulawesi Tengah<br>ujangsarden@example.com</p>
+            </div>
+        </div>
+
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Tax</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Batu Bata</td>
+                    <td>270Kg</td>
+                    <td>Rp. 400.000.000.00</td>
+                    <td>Rp. 48.000.000.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="total">
+            <strong>Total: Rp. 448.000.000.00</strong>
+        </div>
+
+        <p><strong>Payment Method:</strong> BRI Virtual Bank</p>
+        <p><strong>Note:</strong> Terimakasih telah memilih kami!</p>
+
+        <button id="printInvoice">Cetak Bukti Pembayaran</button>
+    </div>
+
+</div>
+
+<script src="js/invoice.js"></script>
+</body>
+</html>
