@@ -5,7 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>CV.TRILOKA SEJAHTERA — Upload Dokumen</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+
 </head>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const current = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-links a[href]').forEach(a => {
+      const href = a.getAttribute('href');
+      if (href && (href === current || current.endsWith(href))) {
+        a.classList.add('active');
+      }
+    });
+  });
+</script>
+
+
 <body>
   <!-- ===== NAVBAR ===== -->
   <nav class="nav">
@@ -28,119 +44,153 @@
   </nav>
 
   <!-- ===== MAIN ===== -->
-  <main class="wrap main" id="content">
-    <h1>Isi formulir ini</h1>
+ <main class="wrap main" id="content">
+  <h1>Isi formulir ini</h1>
 
-    <div class="grid" role="region" aria-label="Form upload dokumen">
-      <!-- LEFT: FORM FIELDS -->
-      <form id="form" novalidate>
+  <div class="grid" role="region" aria-label="Form upload dokumen">
+    <!-- KIRI: FORM FIELDS -->
+    <form id="form" novalidate>
+      <div class="field">
+        <label class="label" for="nama">Nama lengkap</label>
+        <input class="input" id="nama" name="nama" placeholder="Nama lengkap" required />
+      </div>
+
+      <div class="field">
+        <label class="label" for="alamat">Alamat</label>
+        <textarea class="textarea" id="alamat" name="alamat" placeholder="Nama jalan, RT/RW, dsb" required></textarea>
+      </div>
+
+      <div class="field">
+        <label class="label" for="telepon">Nomor telepon</label>
+        <input class="input" id="telepon" name="telepon" type="tel" placeholder="08xxxxxxxxxx" required />
+      </div>
+
+      <div class="field">
+        <label class="label" for="jasa">Jasa yang dipilih</label>
+        <div class="select-wrap">
+          <select class="select" id="jasa" name="jasa" required>
+            <option value="" disabled selected>Pilih jasa</option>
+            <option>Impor barang</option>
+            <option>Jasa gudang</option>
+            <option>Jasa kurir</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
         <div class="field">
-          <label class="label" for="nama">Nama lengkap</label>
-          <input class="input" id="nama" name="nama" placeholder="Nama lengkap" required />
+          <label class="label" for="kota">Kota</label>
+          <input class="input" id="kota" name="kota" placeholder="Kota" required />
         </div>
         <div class="field">
-          <label class="label" for="alamat">Alamat</label>
-          <textarea class="textarea" id="alamat" name="alamat" placeholder="Nama jalan, RT/RW, dsb" required></textarea>
-        </div>
-        <div class="field">
-          <label class="label" for="telepon">Nomor telepon</label>
-          <input class="input" id="telepon" name="telepon" type="tel" placeholder="08xxxxxxxxxx" required />
-        </div>
-        <div class="field">
-          <label class="label" for="jasa">Jasa yang dipilih</label>
+          <label class="label" for="prov">Provinsi</label>
           <div class="select-wrap">
-            <select class="select" id="jasa" name="jasa" required>
-              <option value="" disabled selected>Pilih jasa</option>
-              <option>Impor barang</option>
-              <option>Jasa gudang</option>
-              <option>Jasa kurir</option>
+            <select class="select" id="prov" name="prov" required>
+              <option value="" disabled selected>Pilih provinsi</option>
+              <option>Jawa Barat</option>
+              <option>DKI Jakarta</option>
+              <option>Jawa Tengah</option>
             </select>
           </div>
         </div>
+      </div>
 
-        <div class="row">
-          <div class="field">
-            <label class="label" for="kota">Kota</label>
-            <input class="input" id="kota" name="kota" placeholder="Kota" required />
-          </div>
-          <div class="field">
-            <label class="label" for="prov">Provinsi</label>
-            <div class="select-wrap">
-              <select class="select" id="prov" name="prov" required>
-                <option value="" disabled selected>Pilih provinsi</option>
-                <option>Jawa Barat</option>
-                <option>DKI Jakarta</option>
-                <option>Jawa Tengah</option>
-              </select>
-            </div>
+      <div class="row">
+        <div class="field">
+          <label class="label" for="negara">Negara</label>
+          <div class="select-wrap">
+            <select class="select" id="negara" name="negara" required>
+              <option value="" disabled selected>Pilih negara</option>
+              <option>Indonesia</option>
+              <option>Malaysia</option>
+              <option>Singapura</option>
+            </select>
           </div>
         </div>
-
-        <div class="row">
-          <div class="field">
-            <label class="label" for="negara">Negara</label>
-            <div class="select-wrap">
-              <select class="select" id="negara" name="negara" required>
-                <option value="" disabled selected>Pilih negara</option>
-                <option>Indonesia</option>
-                <option>Malaysia</option>
-                <option>Singapura</option>
-              </select>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label" for="kodepos">Kode pos</label>
-            <input class="input" id="kodepos" name="kodepos" inputmode="numeric" pattern="[0-9]{5}" placeholder="5 digit" required />
-          </div>
-        </div>
-      </form>
-
-      <!-- DIVIDER -->
-      <div class="vr" aria-hidden="true"></div>
-
-      <!-- RIGHT: UPLOAD CARD -->
-      <aside>
-        <div class="card">
-          <h3 style="margin:0 0 10px">Unggah dokumen anda</h3>
-          <div class="drop" id="drop">
-            <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png" />
-            <p><strong>Tarik & letakkan</strong> file ke sini atau <label for="file" style="text-decoration:underline;cursor:pointer">unggah dokumen</label></p>
-            <p class="hint">* Hanya .pdf/.jpg/.png. Maks 5 MB per file.</p>
-            <div class="progress" hidden><div class="bar" id="bar"></div></div>
-            <p class="hint" id="fileInfo"></p>
-          </div>
-
-          <div class="terms">
-            <input type="checkbox" id="agree" />
-            <label for="agree">Saya setuju dengan <a href="#">Syarat dan ketentuan</a></label>
-          </div>
-          <div class="actions">
-            <button id="submitBtn" class="btn btn--success" disabled>Submit</button>
-            <button id="cancelBtn" class="btn btn--dark" type="button">Cancel</button>
-          </div>
-        </div>
-      </aside>
-    </div>
-  </main>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="wrap">
-      <div class="footer-top">
-        <div class="brand">
-          <span class="brand-mark" aria-hidden="true"></span>
-          <span class="brand-name">CV.TRILOKA SEJAHTERA</span>
-        </div>
-        <div style="justify-self:end;display:flex;gap:12px;align-items:center">
-          <span aria-hidden>🌐</span>
-          <span aria-hidden>🐦</span>
-          <span aria-hidden>📷</span>
-          <span aria-hidden>▶️</span>
+        <div class="field">
+          <label class="label" for="kodepos">Kode pos</label>
+          <input class="input" id="kodepos" name="kodepos" inputmode="numeric" pattern="[0-9]{5}" placeholder="5 digit" required />
         </div>
       </div>
-      <p class="copy">© 2025 CV. Triloka Sejahtera — Seluruh hak cipta. Informasi ini hanya contoh untuk keperluan tugas.</p>
+    </form>
+
+    <!-- KANAN: UPLOAD CARD -->
+    <aside class="upload-right">
+      <div class="card">
+        <h3 style="margin:0 0 10px">Unggah dokumen anda</h3>
+
+        <div class="drop" id="drop">
+          <input type="file" id="file" accept=".pdf,.jpg,.jpeg,.png" />
+          <p>
+            <strong>Tarik & letakkan</strong> file ke sini atau
+            <label for="file" style="text-decoration:underline;cursor:pointer">unggah dokumen</label>
+          </p>
+          <p class="hint">* Hanya .pdf/.jpg/.png. Maks 5 MB per file.</p>
+
+          <div class="progress" hidden>
+            <div class="bar" id="bar"></div>
+          </div>
+
+          <p class="hint" id="fileInfo"></p>
+        </div>
+
+        <label class="terms">
+          <input type="checkbox" id="agree" />
+          <span>Saya setuju dengan <a href="#">Syarat dan ketentuan</a></span>
+        </label>
+
+        <div class="actions">
+          <button id="submitBtn" class="btn btn--success" disabled>Submit</button>
+          <button id="cancelBtn" class="btn btn--dark" type="button">Cancel</button>
+        </div>
+      </div>
+    </aside>
+  </div>
+</main>
+
+  <!-- ===== FOOTER ===== -->
+<footer class="main-footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <div class="footer-logo">
+        <span class="logo-icon">◆</span> CV.TRILOKA SEJAHTERA
+      </div>
+      <p>CV. Triloka Sejahtera adalah badan usaha berbentuk commanditaire vennnootschap yang bergerak di bidang pengadaan barang dan jasa.</p>
     </div>
-  </footer>
+
+    <div class="footer-right">
+      <div class="footer-contact">
+        <div class="contact-item">📍 Karawang</div>
+        <div class="contact-item">☎️ (022) xxx-xxxx</div>
+        <div class="contact-item">✉️ admin@triloka.co.id</div>
+      </div>
+
+      <div class="footer-social">
+        <span>Social Media</span>
+        <div class="footer-icons">
+          <a href="#" aria-label="Website">🌐</a>
+          <a href="#" aria-label="Twitter">🐦</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="footer-bottom-links">
+      <a href="#">TENTANG KITA</a>
+      <a href="#">KONTAK KAMI</a>
+      <a href="#">BANTUAN</a>
+      <a href="#">PRIVASI</a>
+      <a href="#">DISCLAIMER</a>
+    </div>
+    <div class="footer-copyright">
+      © 2025 CV. Triloka Sejahtera — Seluruh hak cipta. Informasi ini hanya contoh untuk keperluan tugas.
+    </div>
+  </div>
+</footer>
+
 
   <!-- ===== MODAL ===== -->
   <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
