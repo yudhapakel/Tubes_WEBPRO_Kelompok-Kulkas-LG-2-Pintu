@@ -1,0 +1,134 @@
+
+/* Bagian Hero */
+.hero-section {
+    height: 85vh; 
+
+    background-image: url('https://images.pexels.com/photos/3184418/pexels-photo-3184418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.4);
+height: 50vh;
+    display: flex;
+    align-items: center;
+    padding: 0 5%;
+}
+
+.hero-text {
+    color: #ffffff;
+}
+
+.hero-text h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Bagian Konten Biru */
+.content-section {
+    background-color: #1a253c;
+    color: #ffffff;
+    padding: 3rem 5%;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.content-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+/* Kontainer Putih */
+.card-container {
+    background-color: #ffffff;
+    color: #333;
+    border-radius: 8px;
+    padding: 2rem;
+    
+}
+
+.card-container h3 {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+
+}
+
+/* Grid 3 Kartu */
+.card-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap; 
+}
+
+.info-card {
+    flex-basis: 31%; 
+    min-width: 100px; 
+    height: 250px;
+    width: 200px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    position: relative; 
+    overflow: hidden; 
+    color: #ffffff;
+    
+    display: flex;
+    align-items: flex-end; 
+}
+
+.info-card::before {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.7) 100%);
+}
+
+.card-text {
+    position: relative; 
+    z-index: 2;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* URL Gambar Latar Belakang untuk Kartu */
+/* Ganti ini dengan gambar yang sesuai */
+#card-1 {
+    background-image: url('https://images.pexels.com/photos/1109541/pexels-photo-1109541.jpeg?auto=compress&cs=tinysrgb&w=600');
+}
+#card-2 {
+    background-image: url('https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=600');
+}
+#card-3 {
+    background-image: url('https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=600');
+}
+
+
+/* Tombol "Gabung" */
+.cta-button {
+    background-color: #008CBA; /* Placeholder warna biru */
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #005f7a;
+}

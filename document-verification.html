@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Verifikasi Dokumen</title>
+    
+    <link rel="stylesheet" href="src/css/global.css">
+    <link rel="stylesheet" href="src/css/navbar.css">
+    <link rel="stylesheet" href="src/css/footer.css">
+    
+    <link rel="stylesheet" href="src/css/document-verification.css">
+    
+    <script src="src/js/auth.js"></script>
+    <script src="src/js/componentLoader.js"></script>
+
+</head>
+<body>
+
+    <div id="navbar-placeholder"></div>
+
+    <main>
+        <div class="content-wrapper">
+            <h1>Verifikasi dokumen</h1>
+            
+            <div class="filter-bar">
+                <div class="filter-option">
+                    <span>Date range</span>
+                    <span class="icon-chevron-down">▾</span>
+                </div>
+                <div class="filter-option">
+                    <span>Status</span>
+                    <span class="icon-chevron-down">▾</span>
+                </div>
+                <div class="search-bar">
+                    <span>🔍</span>
+                    <input type="search" placeholder="Search...">
+                </div>
+            </div>
+
+            <div class="document-list">
+                <div class="list-header">
+                    <span class="col-check"><input type="checkbox" /></span>
+                    <span class="col-id">DOCUMENT ID</span>
+                    <span class="col-status">STATUS</span>
+                    <span class="col-date">CREATION DATE</span>
+                </div>
+
+                <div class="list-item" data-status="verified" data-doc-url="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
+                    <span class="col-check"><input type="checkbox" /></span>
+                    <span class="col-id">Doc_1</span>
+                    <span class="col-status">
+                        <span class="status status-verified">Verified</span>
+                    </span>
+                    <span class="col-date">Mar 23, 2022, 13:00 PM</span>
+                </div>
+
+                <div class="list-item" data-status="not-verified" data-doc-url="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
+                    <span class="col-check"><input type="checkbox" /></span>
+                    <span class="col-id">Doc_2</span>
+                    <span class="col-status">
+                        <span class="status status-not-verified">Not verified</span>
+                    </span>
+                    <span class="col-date">Mar 23, 2022, 13:00 PM</span>
+                </div>
+                
+                <div class="list-item" data-status="declined" data-doc-url="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
+                    <span class="col-check"><input type="checkbox" /></span>
+                    <span class="col-id">Doc_3</span>
+                    <span class="col-status">
+                        <span class="status status-declined">Declined</span>
+                    </span>
+                    <span class="col-date">Mar 23, 2022, 13:00 PM</span>
+                </div>
+            </div>
+            
+            <div class="pagination-bar">
+                <span class="results-count">5 results</span>
+                <div class="page-nav">
+                    <a href="#" class="page-link">Previous</a>
+                    <a href="#" class="page-link active">Next</a>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <div class="modal-overlay hidden" id="detail-modal">
+        <div class="modal-content">
+            <span class="modal-close" id="modal-close-btn">&times;</span> 
+
+            <h2>Detail Formulir</h2>
+            <div class="modal-details">
+                <div class="detail-column">
+                    <span class="detail-label">Nama Lengkap</span>
+                    <span class="detail-label">Alamat</span>
+                    <span class="detail-label">Nomor Telepon</span>
+                    <span class="detail-label">Jasa yang dipilih</span>
+                    <span class="detail-label">Kota</span>
+                    <span class="detail-label">Provinsi</span>
+                    <span class="detail-label">Kode Pos</span>
+                </div>
+                <div class="detail-column">
+                    <span class="detail-value">Ujang Garden</span>
+                    <span class="detail-value">Bandung Bojongsoang</span>
+                    <span class="detail-value">0987654321</span>
+                    <span class="detail-value">General konstruksi</span>
+                    <span class="detail-value">Bandung</span>
+                    <span class="detail-value">JawaBarat</span>
+                    <span class="detail-value">40310</span>
+                </div>
+            </div>
+
+            <hr class="modal-divider">
+
+            <h2>Preview document</h2>
+            <div class="preview-section">
+                <div class="preview-file">
+                    <span class="icon-pdf">📄</span> 
+                    <span>Dokumen Penizinan Pengiriman batu kapur</span>
+                </div>
+                <div class="preview-status">
+                    <span class="status status-not-verified" id="modal-preview-status">Belum di Verifikasi</span> 
+                </div>
+            </div>
+            
+            <div class="preview-actions">
+                <a href="#" id="modal-view-btn" class="btn-secondary" target="_blank">Lihat</a>
+                <a href="#" id="modal-download-btn" class="btn-secondary" download="dokumen-verifikasi.pdf">Download</a>
+                <button class="btn-primary" id="verifikasi-btn">Verifikasi dokumen</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal-overlay hidden" id="detail-modal">
+        </div>
+
+    <div class="modal-overlay hidden" id="success-modal">
+        <div class="modal-content modal-success">
+            <div class="success-icon">
+                <div class="checkmark-circle">
+                    <div class="checkmark-stem"></div>
+                    <div class="checkmark-kick"></div>
+                </div>
+            </div>
+
+            <h2>Verifikasi berhasil</h2>
+            
+            <button class="btn-success" id="success-kembali-btn">Kembali</button>
+        </div>
+    </div>
+    
+    <div id="footer-placeholder"></div>
+
+    <script src="src/js/document-verification.js"></script>
+</body>
+</html>
