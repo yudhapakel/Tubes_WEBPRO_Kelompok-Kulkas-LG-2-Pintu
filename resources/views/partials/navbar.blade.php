@@ -1,30 +1,39 @@
-<nav style="background-color: #1f2937; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white;">
-    
-    <div style="font-weight: bold; font-size: 20px; display: flex; align-items: center; gap: 10px;">
-        <img src="{{ asset('src/assets/logo-placeholder.png') }}" alt="Logo" style="height: 30px; filter: brightness(0) invert(1);"> 
-        <span>CV.TRILOKA SEJAHTERA</span>
+<nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #1e293b; color: white;">
+    <div class="navbar-brand">
+        <a href="/" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
+            CV. TRILOKA SEJAHTERA
+        </a>
     </div>
 
-    <div style="display: flex; gap: 20px; font-size: 14px;">
-        <a href="{{ url('/payment') }}" style="color: white; text-decoration: none;">Payment</a>
-        <a href="{{ url('/notification') }}" style="color: white; text-decoration: none;">Notification</a>
-        <a href="{{ url('/profile') }}" style="color: white; text-decoration: none;">My Profile</a>
-        <a href="{{ url('/upload') }}" style="color: white; text-decoration: none;">Document Upload</a>
-    </div>
+    <ul class="navbar-nav" style="display: flex; list-style: none; gap: 20px; margin: 0; padding: 0;">
+        <li><a href="/payment" style="color: white; text-decoration: none;">Payment</a></li>
+        <li><a href="/notification" style="color: white; text-decoration: none;">Notification</a></li>
+        <li><a href="/profile" style="color: white; text-decoration: none;">My Profile</a></li>
+        <li><a href="/document" style="color: white; text-decoration: none;">Document Upload</a></li>
+    </ul>
 
-    <div style="display: flex; align-items: center; gap: 15px;">
-        
-        <div style="text-align: right; font-size: 12px;">
-            <div style="font-weight: bold;">{{ Auth::user()->name }}</div>
-            <div style="color: #bbb;">{{ ucfirst(Auth::user()->role) }}</div>
+    <div class="user-menu" style="display: flex; align-items: center; gap: 15px;">
+        <div style="text-align: right;">
+            <span style="display: block; font-weight: bold; font-size: 13px;">{{ Auth::user()->name }}</span>
+            <span style="display: block; font-size: 11px; color: #94a3b8;">{{ ucfirst(Auth::user()->role) }}</span>
         </div>
 
-        <div style="width: 40px; height: 40px; background-color: #3b82f6; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 18px;">
-            {{ substr(Auth::user()->name, 0, 1) }} </div>
+        <div class="profile-icon">
+            @if(Auth::user()->photo)
+                {{-- Jika user punya foto, tampilkan fotonya --}}
+                <img src="{{ asset('storage/' . Auth::user()->photo) }}?t={{ time() }}" 
+                     style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6;">
+            @else
+                {{-- Jika tidak ada foto, tampilkan inisial --}}
+                <div style="width: 38px; height: 38px; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+                </div>
+            @endif
+        </div>
 
         <form action="{{ route('logout') }}" method="POST" style="margin: 0;">
             @csrf
-            <button type="submit" style="background: none; border: 1px solid #ff4d4d; color: #ff4d4d; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 12px;">
+            <button type="submit" style="background: transparent; border: 1px solid #f87171; color: #f87171; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 12px;">
                 Sign Out
             </button>
         </form>

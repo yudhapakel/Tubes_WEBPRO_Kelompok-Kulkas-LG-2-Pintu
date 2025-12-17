@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController; // Panggil Controller barunya
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\profileController;
 
 // Halaman Login (Tampilan Awal)
 Route::get('/', function () {
@@ -35,3 +36,10 @@ Route::middleware(['auth'])->group(function () {
 
 // Halaman Dashboard (Wajib Login)
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+
+Route::middleware(['auth'])->group(function () {
+    // Tampilkan form edit profile
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Proses update profile
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});

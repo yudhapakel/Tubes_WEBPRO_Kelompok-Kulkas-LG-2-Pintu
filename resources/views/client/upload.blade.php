@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('title', 'Upload Dokumen')
+@section('title', 'My Profile')
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/upload.css') }}">
