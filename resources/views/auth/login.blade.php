@@ -7,6 +7,13 @@
     <title>Login & SignUp</title>
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('css/Login.css') }}">
+    
+    <style>
+        .alert { padding: 12px; margin-bottom: 20px; border-radius: 8px; font-size: 14px; text-align: center; line-height: 1.5; }
+        .alert-success { background-color: #d1fae5; color: #065f46; border: 1px solid #34d399; }
+        .alert-danger { background-color: #fee2e2; color: #991b1b; border: 1px solid #f87171; }
+        .alert ul { list-style: none; padding: 0; margin: 0; }
+    </style>
 </head>
 
 <body>
@@ -18,12 +25,27 @@
             <div class="form-content">
                 <h1>Welcome!</h1>
 
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        ✅ {{ session('success') }}
+                    </div>
+                @endif
+
+                @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>⚠️ {{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="tabs">
                     <span class="tab active" id="login-tab">Login</span>
                     <span class="tab" id="signup-tab">SignUp</span>
                 </div>
 
-                <form id="login-form" action="{{ route('login') }}" method="POST">
+                <form id="login-form" action="{{ route('login.process') }}" method="POST">
                     @csrf
 
                     <div class="input-group">
@@ -42,9 +64,10 @@
                     <p class="form-link">Forgot Password?</p>
                 </form>
 
-                <form id="signup-form" action="{{ route('register') }}" method="POST" style="display: none;">
-
-                    @csrf <div class="input-group">
+                <form id="signup-form" action="{{ route('register.process') }}" method="POST" style="display: none;">
+                    @csrf 
+                    
+                    <div class="input-group">
                         <input type="text" name="name" id="fullname" placeholder="Full Name" required>
                     </div>
 
@@ -53,7 +76,7 @@
                     </div>
 
                     <div class="input-group">
-                        <input type="password" name="password" id="signup-password" placeholder="Password" required>
+                        <input type="password" name="password" id="signup-password" placeholder="Password (Min 8 chars)" required>
 
                         <span class="toggle-password">
                             <img src="{{ asset('src/assets/eye-closed.svg') }}" id="signup-toggle-icon" alt="Toggle Password">
@@ -77,9 +100,6 @@
         </div>
     </div>
 
-
-
     <script src="{{ asset('js/Login.js') }}"></script>
 </body>
-
 </html>

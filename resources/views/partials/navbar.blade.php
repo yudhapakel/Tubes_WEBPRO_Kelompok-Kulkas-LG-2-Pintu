@@ -1,7 +1,13 @@
 <nav class="navbar" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background-color: #1e293b; color: white;">
     <div class="navbar-brand">
-        <a href="/" style="color: white; text-decoration: none; font-weight: bold; font-size: 18px;">
-            CV. TRILOKA SEJAHTERA
+        <a href="{{ Auth::check() ? url('/dashboard') : url('/') }}" class="navbar-brand" style="text-decoration: none; color: white !important; display: flex; align-items: center; gap: 10px;">
+
+            @if(isset($logo))
+            <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 40px;">
+            @endif
+
+            <span style="font-weight: bold; font-size: 1.2rem;">CV. TRILOKA SEJAHTERA</span>
+
         </a>
     </div>
 
@@ -9,7 +15,7 @@
         <li><a href="/payment" style="color: white; text-decoration: none;">Payment</a></li>
         <li><a href="/notification" style="color: white; text-decoration: none;">Notification</a></li>
         <li><a href="/profile" style="color: white; text-decoration: none;">My Profile</a></li>
-        <li><a href="/document" style="color: white; text-decoration: none;">Document Upload</a></li>
+        <a href="{{ route('upload.create') }}" style="color: white; text-decoration: none;">  Document Upload </a>
     </ul>
 
     <div class="user-menu" style="display: flex; align-items: center; gap: 15px;">
@@ -20,14 +26,12 @@
 
         <div class="profile-icon">
             @if(Auth::user()->photo)
-                {{-- Jika user punya foto, tampilkan fotonya --}}
-                <img src="{{ asset('storage/' . Auth::user()->photo) }}?t={{ time() }}" 
-                     style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6;">
+            <img src="{{ asset('storage/' . Auth::user()->photo) }}?t={{ time() }}"
+                style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6;">
             @else
-                {{-- Jika tidak ada foto, tampilkan inisial --}}
-                <div style="width: 38px; height: 38px; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
-                    {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
-                </div>
+            <div style="width: 38px; height: 38px; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
+                {{ strtoupper(substr(Auth::user()->name, 0, 1)) }}
+            </div>
             @endif
         </div>
 

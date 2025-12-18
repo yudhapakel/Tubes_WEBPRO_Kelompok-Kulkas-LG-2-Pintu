@@ -1,4 +1,5 @@
-@extends('layouts.main') @section('title', 'Dashboard')
+@extends('layouts.main') 
+@section('title', 'Dashboard')
 
 @section('content')
 <main>
@@ -29,13 +30,14 @@
                 </div>
             </div>
 
+
             @guest
-            <button class="cta-button" onclick="window.location='{{ url('/') }}'">Gabung</button>
+                <div style="margin-top: 30px;">
+                    <a href="{{ route('register') }}" class="cta-button" style="text-decoration: none;">Gabung</a>
+                </div>
             @endguest
 
-            @auth
-            <a href="{{ url('/upload') }}" class="cta-button" style="text-decoration:none;">Upload Dokumen</a>
-            @endauth
+
         </div>
     </section>
 
