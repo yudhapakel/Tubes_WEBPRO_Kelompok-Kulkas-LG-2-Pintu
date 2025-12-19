@@ -93,7 +93,7 @@
 
                 <div class="field">
                     <label class="label" for="alamat">Alamat</label>
-                    <textarea class="textarea" id="alamat" name="alamat" placeholder="Nama jalan, RT/RW, dsb" required></textarea>
+                    <textarea class="textarea" id="alamat" name="alamat" placeholder="Nama jalan, RT/RW, dsb" required>{{ Auth::user()->address }}</textarea>
                 </div>
 
                 <div class="field">
@@ -111,6 +111,12 @@
                             <option value="Jasa kurir">Jasa kurir</option>
                         </select>
                     </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="client_budget">Estimasi Budget / Harga Harapan (Rp)</label>
+                    <input class="input" type="number" id="client_budget" name="client_budget" placeholder="Contoh: 5000000" min="0" required />
+                    <small style="color: #666; font-size: 12px;">*Masukkan angka saja tanpa titik/koma</small>
                 </div>
 
                 <div class="row">
