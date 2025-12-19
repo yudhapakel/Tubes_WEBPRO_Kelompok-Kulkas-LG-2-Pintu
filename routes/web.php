@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('auth.login');
 })->name('login');
 
-Route::post('/register', [RegisterController::class, 'store'])->name('register');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.process');
 
 
 Route::post('/logout', function () {
@@ -24,7 +24,7 @@ Route::post('/logout', function () {
 })->name('logout');
 
 // Proses Login (Nangani Form POST) -> Arahin ke LoginController fungsi 'authenticate'
-Route::post('/', [LoginController::class, 'authenticate']);
+Route::post('/', [LoginController::class, 'authenticate'])->name('login.process');
 
 Route::middleware(['auth'])->group(function () {
     // Rute buat nampilin form
