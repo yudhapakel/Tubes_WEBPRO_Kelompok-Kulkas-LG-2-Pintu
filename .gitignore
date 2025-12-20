@@ -36,8 +36,8 @@ Thumbs.db
 # Build & Cache
 /bootstrap/cache/*.php
 /.php-cs-fixer.cache
-/public/css/
-/public/js/
+# /public/css/
+# /public/js/
 
 # Homestead
 Homestead.json

@@ -9,7 +9,8 @@ class Document extends Model
     protected $fillable = [
         'user_id', 'nama', 'alamat', 'telepon', 'jasa',
         'kota', 'prov', 'negara', 'kodepos',
-        'file_path', 'status'
+        'file_path', 'status',
+        'client_budget',
     ];
 
     public function user()

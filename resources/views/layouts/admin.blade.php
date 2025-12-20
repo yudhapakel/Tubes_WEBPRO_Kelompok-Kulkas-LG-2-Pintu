@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title') - Admin Panel</title>
+
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
+
 <body>
     <!-- Admin Navbar -->
     <nav class="admin-navbar">
@@ -28,11 +32,11 @@
     <!-- Main Content -->
     <div class="admin-container">
         @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
+        <div class="alert alert-success">{{ session('success') }}</div>
         @endif
 
         @if(session('error'))
-            <div class="alert alert-error">{{ session('error') }}</div>
+        <div class="alert alert-error">{{ session('error') }}</div>
         @endif
 
         @yield('content')
@@ -41,4 +45,5 @@
     <script src="{{ asset('js/admin.js') }}"></script>
     @stack('scripts')
 </body>
+
 </html>
