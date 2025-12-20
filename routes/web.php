@@ -24,35 +24,25 @@ Route::post('/logout', function () {
     return redirect('/');
 })->name('logout');
 
-// Proses Login (Nangani Form POST) -> Arahin ke LoginController fungsi 'authenticate'
 Route::post('/', [LoginController::class, 'authenticate'])->name('login.process');
 
-// Halaman Dashboard (Wajib Login)
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
-    // --- 1. Upload Dokumen ---
     Route::get('/upload', [DocumentController::class, 'create'])->name('upload.create');
     Route::post('/upload', [DocumentController::class, 'store'])->name('upload.store');
 
-    // --- 2. Edit Profile ---
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-    // --- 3. Payment & Project List (KODINGAN BARU DISINI) ---
-    // List Project (Halaman Utama Menu Payment)
     Route::get('/payment', [ClientPaymentController::class, 'index'])->name('payment.index');
     
-    // Action: Client Setuju Harga (Accept Penawaran)
     Route::post('/penawaran/{id}/accept', [ClientPaymentController::class, 'acceptPenawaran'])->name('client.penawaran.accept');
     
-    // Halaman Bayar (Form Kartu Kredit)
     Route::get('/payment/pay/{id}', [ClientPaymentController::class, 'pay'])->name('payment.pay');
     
-    // Proses Bayar (Submit Form)
     Route::post('/payment/process/{id}', [ClientPaymentController::class, 'process'])->name('payment.process');
     
-    // Lihat Resi / Invoice Lunas
     Route::get('/invoice/{id}', [ClientPaymentController::class, 'receipt'])->name('payment.receipt');
 });
 

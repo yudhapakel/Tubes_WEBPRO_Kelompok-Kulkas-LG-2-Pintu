@@ -10,7 +10,7 @@ body {
     padding: 0 20px;
 }
 
-/* --- 2. NAVBAR ADMIN (Ini yang bikin navbar lu gak polos lagi) --- */
+/* --- 2. NAVBAR ADMIN --- */
 .admin-navbar {
     background-color: #1a202c; /* Gelap elegan */
     color: white;
@@ -46,7 +46,7 @@ body {
     font-weight: 700;
 }
 
-/* --- 3. DASHBOARD STATS (Kotak-kotak Angka) --- */
+/* --- 3. DASHBOARD STATS  --- */
 .page-header { margin-bottom: 2rem; }
 .page-title { font-size: 1.8rem; font-weight: 800; color: #1a202c; margin-bottom: 0.5rem; }
 .page-subtitle { color: #718096; font-size: 1rem; }
@@ -73,7 +73,7 @@ body {
 .stat-card.warning { border-left-color: #d69e2e; }
 .stat-card.danger { border-left-color: #e53e3e; }
 
-/* --- 4. TABLES (Biar list request rapi) --- */
+/* --- 4. TABLES  --- */
 .data-table {
     background: white;
     border-radius: 12px;
@@ -88,7 +88,7 @@ table { width: 100%; border-collapse: collapse; }
 th { text-align: left; padding: 1rem; background-color: #f7fafc; color: #4a5568; font-weight: 600; border-bottom: 2px solid #edf2f7; }
 td { padding: 1rem; border-bottom: 1px solid #edf2f7; color: #4a5568; vertical-align: middle; }
 
-/* --- 5. ACTION BUTTONS & FORMS (Biar tombol di halaman detail rapi) --- */
+/* --- 5. ACTION BUTTONS & FORMS  --- */
 .action-card {
     background: #f8fafc;
     border: 1px solid #e2e8f0;
@@ -115,7 +115,7 @@ td { padding: 1rem; border-bottom: 1px solid #edf2f7; color: #4a5568; vertical-a
 .btn-success { background: #38a169; color: white; } 
 .btn-danger { background: #e53e3e; color: white; }
 
-/* Form Control di halaman detail */
+/* Form Control  halaman detail */
 .form-group { margin-bottom: 15px; }
 .form-label { display: block; margin-bottom: 5px; font-weight: 600; color: #4a5568; }
 .form-input, .form-select {

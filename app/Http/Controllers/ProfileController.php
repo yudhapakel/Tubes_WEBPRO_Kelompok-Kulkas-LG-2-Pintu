@@ -10,7 +10,7 @@ class ProfileController extends Controller
 {
     public function update(Request $request)
     {
-        $user = Auth::user(); // Gunakan facade Auth agar lebih stabil
+        $user = Auth::user(); 
     
         $request->validate([
             'name' => 'required|string|max:255',
@@ -20,24 +20,19 @@ class ProfileController extends Controller
             'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
     
-        // Ambil semua input kecuali photo dulu
         $input = $request->only(['name', 'email', 'phone', 'address']);
     
         if ($request->hasFile('photo')) {
-            // Hapus foto lama jika ada
             if ($user->photo) {
                 Storage::disk('public')->delete($user->photo);
             }
             
-            // Simpan foto baru
             $fileName = time() . '_' . $user->id . '.' . $request->photo->extension();
             $path = $request->file('photo')->storeAs('profile_photos', $fileName, 'public');
             
-            // Masukkan path ke array input
             $input['photo'] = $path;
         }
     
-        // Update user dengan data yang sudah digabung
         $user->update($input);
     
         return redirect()->back()->with('success', 'Profil berhasil diperbarui!');
