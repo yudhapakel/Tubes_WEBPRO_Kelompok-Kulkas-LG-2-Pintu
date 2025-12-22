@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invoice;
+use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB; 
 use Illuminate\Support\Str;
@@ -33,8 +34,8 @@ class DocumentController extends Controller
 
         $path = $request->file('file')->store('documents', 'public');
 
-        \Illuminate\Support\Facades\DB::table('documents')->insert([
-            'user_id' => \Illuminate\Support\Facades\Auth::id(),
+        Document::create([
+            'user_id' => Auth::id(),
             'nama' => $request->nama,
             'alamat' => $request->alamat,
             'telepon' => $request->telepon,
@@ -43,14 +44,9 @@ class DocumentController extends Controller
             'prov' => $request->prov,
             'negara' => $request->negara,
             'kodepos' => $request->kodepos,
-
-
             'client_budget' => $request->client_budget,
-
             'file_path' => $path,
-            'status' => 'pending', 
-            'created_at' => now(),
-            'updated_at' => now(),
+            'status' => 'pending',
         ]);
 
         return redirect()->back()->with('show_modal', true);
