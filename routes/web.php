@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group(function () {
     
     Route::post('/penawaran/{id}/accept', [ClientPaymentController::class, 'acceptPenawaran'])->name('client.penawaran.accept');
     
+    Route::post('/penawaran/{id}/negotiate', [ClientPaymentController::class, 'negotiatePenawaran'])->name('client.penawaran.negotiate');
+    
     Route::get('/payment/pay/{id}', [ClientPaymentController::class, 'pay'])->name('payment.pay');
     
     Route::post('/payment/process/{id}', [ClientPaymentController::class, 'process'])->name('payment.process');

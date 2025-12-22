@@ -50,9 +50,11 @@
                 <h3 style="margin-bottom: 20px; border-bottom: 2px solid #ddd; padding-bottom: 10px;">Detail Pembayaran</h3>
 
                 <div class="detail-box" style="margin-bottom: 20px;">
-                    <p style="margin-bottom: 5px;"><strong>Jasa:</strong> <br> {{ $invoice->service_name }}</p>
+                    <p style="margin-bottom: 5px;"><strong>Jasa:</strong> <br> 
+                        {{ $invoice->penawaran->description ?? ($invoice->items[0]['name'] ?? 'Layanan') }}
+                    </p>
                     <p style="margin-bottom: 5px; font-size: 18px; color: #2563eb;">
-                        <strong>Total: Rp {{ number_format($invoice->amount, 0, ',', '.') }}</strong>
+                        <strong>Total: Rp {{ number_format($invoice->total, 0, ',', '.') }}</strong>
                     </p>
                 </div>
 

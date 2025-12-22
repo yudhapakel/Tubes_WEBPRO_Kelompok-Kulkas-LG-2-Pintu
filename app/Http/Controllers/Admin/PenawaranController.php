@@ -51,9 +51,14 @@ class PenawaranController extends Controller
             $taxAmount = ($subtotal * $validated['tax_percentage']) / 100;
             $total = $subtotal + $taxAmount;
 
-            $latestPenawaran = Penawaran::latest()->first();
+            // Generate unique quotation number for current year
+            $currentYear = date('Y');
+            $latestPenawaran = Penawaran::where('quotation_number', 'like', "QOT-{$currentYear}-%")
+                ->orderBy('quotation_number', 'desc')
+                ->first();
+            
             $number = $latestPenawaran ? intval(substr($latestPenawaran->quotation_number, -3)) + 1 : 1;
-            $quotationNumber = 'QOT-' . date('Y') . '-' . str_pad($number, 3, '0', STR_PAD_LEFT);
+            $quotationNumber = 'QOT-' . $currentYear . '-' . str_pad($number, 3, '0', STR_PAD_LEFT);
 
             $document = Document::findOrFail($validated['document_id']);
 
@@ -142,9 +147,14 @@ class PenawaranController extends Controller
 
             $finalTotal = $penawaran->admin_counter_offer ?? $penawaran->total;
 
-            $latestInvoice = Invoice::latest()->first();
+            // Generate unique invoice number for current year
+            $currentYear = date('Y');
+            $latestInvoice = Invoice::where('invoice_number', 'like', "INV-{$currentYear}-%")
+                ->orderBy('invoice_number', 'desc')
+                ->first();
+            
             $number = $latestInvoice ? intval(substr($latestInvoice->invoice_number, -3)) + 1 : 1;
-            $invoiceNumber = 'INV-' . date('Y') . '-' . str_pad($number, 3, '0', STR_PAD_LEFT);
+            $invoiceNumber = 'INV-' . $currentYear . '-' . str_pad($number, 3, '0', STR_PAD_LEFT);
 
             $invoice = Invoice::create([
                 'quotation_id' => $penawaran->id,

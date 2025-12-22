@@ -40,7 +40,7 @@
         <div class="info-grid">
             <div>
                 <p>Total Amount</p>
-                <strong>Rp {{ number_format($invoice->amount, 0, ',', '.') }}</strong>
+                <strong>Rp {{ number_format($invoice->total, 0, ',', '.') }}</strong>
             </div>
             <div>
                 <p>Status</p>
@@ -99,21 +99,25 @@
             <thead>
                 <tr>
                     <th>Item</th>
+                    <th>Qty</th>
                     <th>Price</th>
-                    <th style="text-align: right;">Total</th>
+                    <th style="text-align: right;">Subtotal</th>
                 </tr>
             </thead>
             <tbody>
+                @foreach($invoice->items ?? [] as $item)
                 <tr>
-                    <td>{{ $invoice->service_name }}</td>
-                    <td>Rp {{ number_format($invoice->amount, 0, ',', '.') }}</td>
-                    <td style="text-align: right;">Rp {{ number_format($invoice->amount, 0, ',', '.') }}</td>
+                    <td>{{ $item['name'] ?? 'Service' }}</td>
+                    <td>{{ $item['qty'] ?? 1 }}</td>
+                    <td>Rp {{ number_format($item['unit_price'] ?? 0, 0, ',', '.') }}</td>
+                    <td style="text-align: right;">Rp {{ number_format($item['subtotal'] ?? 0, 0, ',', '.') }}</td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
 
         <div class="total">
-            <strong>Total: Rp {{ number_format($invoice->amount, 0, ',', '.') }}</strong>
+            <strong>Total: Rp {{ number_format($invoice->total, 0, ',', '.') }}</strong>
         </div>
 
         <p style="margin-top: 20px; font-size: 14px;"><strong>Note:</strong> Terima kasih telah mempercayakan proyek Anda kepada Triloka Sejahtera!</p>
