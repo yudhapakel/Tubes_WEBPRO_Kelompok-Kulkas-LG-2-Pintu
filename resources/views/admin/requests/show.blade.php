@@ -76,7 +76,7 @@
         
         @if($document->penawaran)
             <div class="alert alert-success">
-                ✅ Quotation sudah dibuat untuk request ini!
+                 Quotation sudah dibuat untuk request ini!
             </div>
             <a href="{{ route('admin.penawarans.show', $document->penawaran->id) }}" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
                 View Quotation
@@ -86,7 +86,7 @@
                 Request ini belum memiliki quotation. Buat quotation untuk request ini:
             </p>
             <a href="{{ route('admin.penawarans.create', $document->id) }}" class="btn btn-success" style="width: 100%; margin-bottom: 1rem;">
-                📝 Buat Penawaran
+                 Buat Penawaran
             </a>
         @endif
 

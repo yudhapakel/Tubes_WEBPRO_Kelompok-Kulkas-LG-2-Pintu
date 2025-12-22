@@ -113,14 +113,14 @@
             <form action="{{ route('admin.penawarans.send', $penawaran->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 1rem;">
-                    📧 Kirim Penawaran ke Client
+                    Kirim Penawaran ke Client
                 </button>
             </form>
         @endif
 
         @if($penawaran->status === 'sent' || $penawaran->status === 'negotiating')
             <div class="alert alert-success" style="margin-bottom: 1rem;">
-                ✅ Penawaran sudah dikirim ke client. Menunggu response...
+                Penawaran sudah dikirim ke client. Menunggu response...
             </div>
 
             <h4>Send Counter Offer</h4>
@@ -142,14 +142,14 @@
             <form action="{{ route('admin.penawarans.accept', $penawaran->id) }}" method="POST">
                 @csrf
                 <button type="submit" class="btn btn-success" style="width: 100%;" data-confirm="Terima penawaran dengan harga final?">
-                    ✅ Accept Current Offer
+                    Accept Current Offer
                 </button>
             </form>
         @endif
 
         @if($penawaran->status === 'accepted')
             <div class="alert alert-success" style="margin-bottom: 1rem;">
-                ✅ Penawaran telah diterima! Siap dikonversi ke invoice.
+                Penawaran telah diterima! Siap dikonversi ke invoice.
             </div>
 
             @if($penawaran->invoice)
@@ -163,12 +163,12 @@
                 <form action="{{ route('admin.penawarans.convert', $penawaran->id) }}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-success" style="width: 100%; font-size: 1.1rem; padding: 1rem;" data-confirm="Convert penawaran ini menjadi invoice?">
-                        🧾 Convert to Invoice
+                        Convert to Invoice
                     </button>
                 </form>
 
                 <div style="margin-top: 1.5rem; padding: 1rem; background: #e7f3ff; border-radius: 4px; font-size: 0.9rem;">
-                    <strong>⚠️ Payment Policy:</strong>
+                    <strong>Payment Policy:</strong>
                     <p style="margin-top: 0.5rem;">
                         User harus bayar <strong>FULL PAYMENT</strong> (100%)
                     </p>
@@ -181,7 +181,7 @@
 
         @if($penawaran->status === 'converted')
             <div class="alert alert-success">
-                ✅ Sudah dikonversi ke invoice
+                Sudah dikonversi ke invoice
             </div>
             <a href="{{ route('admin.invoices.show', $penawaran->invoice->id) }}" class="btn btn-primary" style="width: 100%;">
                 View Invoice
@@ -190,7 +190,7 @@
 
         @if($penawaran->status === 'rejected')
             <div class="alert alert-error">
-                ❌ Penawaran ditolak oleh client
+                Penawaran ditolak oleh client
             </div>
         @endif
 

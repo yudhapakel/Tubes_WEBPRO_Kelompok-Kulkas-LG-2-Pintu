@@ -111,15 +111,15 @@
                 <textarea name="rejection_reason" class="form-control" rows="3" placeholder="Alasan rejection..." required></textarea>
             </div>
             <button type="submit" class="btn btn-danger" style="width: 100%;" data-confirm="Reject payment ini?">
-                ❌ Reject Payment
+                 Reject Payment
             </button>
         </form>
         @else
         <div class="alert {{ $payment->status === 'verified' ? 'alert-success' : 'alert-error' }}">
             @if($payment->status === 'verified')
-                ✅ Payment sudah diverifikasi
+                Payment sudah diverifikasi
             @else
-                ❌ Payment ditolak
+                Payment ditolak
             @endif
         </div>
         @endif

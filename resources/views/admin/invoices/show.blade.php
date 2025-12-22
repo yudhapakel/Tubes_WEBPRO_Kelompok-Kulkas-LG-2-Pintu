@@ -94,7 +94,7 @@
         <hr>
 
         <div style="background: #fff3cd; padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 4px solid #ffc107;">
-            <h4 style="margin: 0 0 1rem 0; color: #856404;">⚠️ FULL PAYMENT REQUIRED</h4>
+            <h4 style="margin: 0 0 1rem 0; color: #856404;">FULL PAYMENT REQUIRED</h4>
             <p style="margin: 0; font-size: 1.3rem; font-weight: bold; color: var(--primary);">
                 Rp {{ number_format($invoice->total, 0, ',', '.') }}
             </p>
@@ -116,7 +116,7 @@
 
                 @if($payment->status === 'verified')
                     <div style="color: #155724; margin-top: 1rem;">
-                        <p>✅ <strong>PAID</strong></p>
+                        <p><strong>PAID</strong></p>
                         <p style="font-size: 0.9rem; margin-top: 0.5rem;">
                             Verified on {{ $payment->verified_at->format('d M Y, H:i') }}<br>
                             by {{ $payment->verifier->name }}
@@ -124,7 +124,7 @@
                     </div>
                 @elseif($payment->status === 'pending')
                     <div style="color: #856404; margin-top: 1rem;">
-                        <p>⏳ <strong>Awaiting Verification</strong></p>
+                        <p> <strong>Awaiting Verification</strong></p>
                         <p style="font-size: 0.9rem; margin-top: 0.5rem;">
                             Uploaded on {{ $payment->created_at->format('d M Y, H:i') }}
                         </p>
@@ -134,7 +134,7 @@
                     </div>
                 @elseif($payment->status === 'rejected')
                     <div style="color: #721c24; margin-top: 1rem;">
-                        <p>❌ <strong>REJECTED</strong></p>
+                        <p> <strong>REJECTED</strong></p>
                         <p style="font-size: 0.9rem; margin-top: 0.5rem; background: #f8d7da; padding: 0.8rem; border-radius: 4px;">
                             {{ $payment->rejection_reason }}
                         </p>
@@ -143,7 +143,7 @@
             </div>
         @else
             <div style="padding: 1.5rem; background: #f8f9fa; border-radius: 8px; text-align: center; color: #999;">
-                <p>⏺️ Payment not received yet</p>
+                <p> Payment not received yet</p>
                 <p style="font-size: 0.9rem; margin-top: 0.5rem;">Waiting for client to upload payment proof</p>
             </div>
         @endif
@@ -151,7 +151,7 @@
         <hr style="margin: 2rem 0;">
         
         <a href="{{ route('admin.invoices.download', $invoice->id) }}" class="btn btn-primary" style="width: 100%; margin-bottom: 0.5rem;">
-            📄 Download PDF
+             Download PDF
         </a>
         <a href="{{ route('admin.invoices.index') }}" class="btn btn-primary" style="width: 100%;">
             ← Back to Invoices
