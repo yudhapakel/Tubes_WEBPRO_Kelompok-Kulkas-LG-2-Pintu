@@ -8,6 +8,7 @@ use App\Models\Document;
 use App\Models\Penawaran; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Helpers\NotificationHelper;
 
 class PaymentController extends Controller
 {
@@ -27,6 +28,17 @@ class PaymentController extends Controller
         if ($penawaran->status == 'sent' || $penawaran->status == 'negotiating') {
             
             $penawaran->update(['status' => 'accepted']);
+
+            // Notify admin
+            $admins = \App\Models\User::where('role', 'admin')->get();
+            foreach ($admins as $admin) {
+                NotificationHelper::quotationAccepted(
+                    $admin->id,
+                    $penawaran->id,
+                    $penawaran->quotation_number,
+                    Auth::user()->name
+                );
+            }
 
             return redirect()->back()->with('success', 'Harga disetujui! Harap tunggu Admin menerbitkan Invoice.');
         }
@@ -54,6 +66,17 @@ class PaymentController extends Controller
             'client_notes' => $validated['client_notes'],
             'status' => 'negotiating',
         ]);
+
+        // Notify admin
+        $admins = \App\Models\User::where('role', 'admin')->get();
+        foreach ($admins as $admin) {
+            NotificationHelper::quotationNegotiated(
+                $admin->id,
+                $penawaran->id,
+                $penawaran->quotation_number,
+                Auth::user()->name
+            );
+        }
 
         return redirect()->back()->with('success', 'Counter offer berhasil dikirim! Harap tunggu respon dari Admin.');
     }

@@ -31,6 +31,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::middleware(['auth'])->group(function () {
     Route::get('/upload', [DocumentController::class, 'create'])->name('upload.create');
     Route::post('/upload', [DocumentController::class, 'store'])->name('upload.store');
+    Route::get('/document/{id}/download', [DocumentController::class, 'download'])->name('document.download');
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -46,6 +47,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/payment/process/{id}', [ClientPaymentController::class, 'process'])->name('payment.process');
     
     Route::get('/invoice/{id}', [ClientPaymentController::class, 'receipt'])->name('payment.receipt');
+    
+    // Notifikasi Routes
+    Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications.index');
+    Route::post('/notifications/{id}/read', [App\Http\Controllers\NotificationController::class, 'markAsRead'])->name('notifications.read');
+    Route::post('/notifications/read-all', [App\Http\Controllers\NotificationController::class, 'markAllAsRead'])->name('notifications.readAll');
 });
 
 // rute admin

@@ -8,6 +8,7 @@ use App\Models\Penawaran;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\NotificationHelper;
 
 class PenawaranController extends Controller
 {
@@ -77,6 +78,13 @@ class PenawaranController extends Controller
 
             $document->update(['status' => 'quotation_created']);
 
+            // Trigger notification to client
+            NotificationHelper::quotationSent(
+                $document->user_id,
+                $penawaran->id,
+                $quotationNumber
+            );
+
             DB::commit();
 
             return redirect()->route('admin.penawarans.show', $penawaran->id)
@@ -100,6 +108,13 @@ class PenawaranController extends Controller
         $penawaran = Penawaran::findOrFail($id);
         $penawaran->update(['status' => 'sent']);
 
+        // Notify client
+        NotificationHelper::quotationSent(
+            $penawaran->user_id,
+            $penawaran->id,
+            $penawaran->quotation_number
+        );
+
         return back()->with('success', 'Penawaran berhasil dikirim ke klien!');
     }
 
@@ -117,6 +132,14 @@ class PenawaranController extends Controller
             'admin_notes' => $validated['admin_notes'],
             'status' => 'negotiating',
         ]);
+
+        // Notify client about admin counter offer
+        NotificationHelper::adminCounterOffer(
+            $penawaran->user_id,
+            $penawaran->id,
+            $penawaran->quotation_number,
+            $validated['admin_counter_offer']
+        );
 
         return back()->with('success', 'Counter offer berhasil dikirim!');
     }

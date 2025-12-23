@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ProfileController extends Controller
 {
@@ -22,17 +23,30 @@ class ProfileController extends Controller
     
         $input = $request->only(['name', 'email', 'phone', 'address']);
     
+        // Handle photo upload
         if ($request->hasFile('photo')) {
+            // Delete old photo if exists
             if ($user->photo) {
-                Storage::disk('public')->delete($user->photo);
+                $oldPhotoPath = public_path('images/profile/' . $user->photo);
+                if (File::exists($oldPhotoPath)) {
+                    File::delete($oldPhotoPath);
+                }
             }
             
-            $fileName = time() . '_' . $user->id . '.' . $request->photo->extension();
-            $path = $request->file('photo')->storeAs('profile_photos', $fileName, 'public');
+            // Create directory if doesn't exist
+            if (!File::exists(public_path('images/profile'))) {
+                File::makeDirectory(public_path('images/profile'), 0755, true);
+            }
             
-            $input['photo'] = $path;
+            // Save new photo
+            $fileName = time() . '_' . $user->id . '.' . $request->photo->extension();
+            $request->file('photo')->move(public_path('images/profile'), $fileName);
+            
+            // Add photo to input array
+            $input['photo'] = $fileName;
         }
     
+        // Update user with all input data including photo if exists
         $user->update($input);
     
         return redirect()->back()->with('success', 'Profil berhasil diperbarui!');

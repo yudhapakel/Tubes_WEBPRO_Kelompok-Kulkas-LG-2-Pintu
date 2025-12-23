@@ -36,7 +36,7 @@
             <tr>
                 <td style="padding: 0.5rem; font-weight: 600;">Document:</td>
                 <td style="padding: 0.5rem;">
-                    <a href="{{ Storage::url($document->file_path) }}" target="_blank" class="btn btn-sm btn-primary">Download</a>
+                    <a href="{{ route('document.download', $document->id) }}" target="_blank" class="btn btn-sm btn-primary">Download</a>
                 </td>
             </tr>
         </table>

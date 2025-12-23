@@ -7,6 +7,7 @@ use App\Models\Payment;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Helpers\NotificationHelper;
 
 class PaymentController extends Controller
 {
@@ -46,6 +47,13 @@ class PaymentController extends Controller
             $invoice = $payment->invoice;
             $invoice->update(['status' => 'paid']);
 
+            // Notify client
+            NotificationHelper::paymentVerified(
+                $payment->user_id,
+                $invoice->id,
+                $invoice->invoice_number
+            );
+
             DB::commit();
 
             return redirect()->route('admin.payments.index')
@@ -71,6 +79,14 @@ class PaymentController extends Controller
             'verified_at' => now(),
             'rejection_reason' => $validated['rejection_reason'],
         ]);
+
+        // Notify client
+        NotificationHelper::paymentRejected(
+            $payment->user_id,
+            $payment->id,
+            $payment->invoice->invoice_number ?? 'N/A',
+            $validated['rejection_reason']
+        );
 
         return redirect()->route('admin.payments.index')
             ->with('success', 'Payment ditolak. Klien akan diberitahu.');

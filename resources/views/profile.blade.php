@@ -35,7 +35,7 @@
 
             <div id="image-preview-container">
                 @if($user->photo)
-                <img id="main-preview" src="{{ asset('storage/' . $user->photo) }}?t={{ time() }}"
+                <img id="main-preview" src="{{ asset('images/profile/' . $user->photo) }}?t={{ time() }}"
                     alt="Foto Profil"
                     style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin: 0 auto 20px auto; border: 4px solid #f3f4f6; display: block;">
                 @else

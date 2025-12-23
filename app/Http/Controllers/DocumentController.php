@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Invoice;
 use App\Models\Document;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB; 
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DocumentController extends Controller
@@ -50,5 +51,22 @@ class DocumentController extends Controller
         ]);
 
         return redirect()->back()->with('show_modal', true);
+    }
+
+    public function download($id)
+    {
+        $document = Document::findOrFail($id);
+        
+        // Check if user is owner or admin
+        if (Auth::id() !== $document->user_id && Auth::user()->role !== 'admin') {
+            abort(403, 'Unauthorized access to this document');
+        }
+        
+        // Check if file exists
+        if (!Storage::disk('public')->exists($document->file_path)) {
+            abort(404, 'File not found');
+        }
+        
+        return Storage::disk('public')->download($document->file_path);
     }
 }

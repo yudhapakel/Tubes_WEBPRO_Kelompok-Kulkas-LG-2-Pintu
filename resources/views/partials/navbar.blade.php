@@ -13,7 +13,19 @@
 
     <ul class="navbar-nav" style="display: flex; list-style: none; gap: 20px; margin: 0; padding: 0;">
         <li><a href="/payment" style="color: white; text-decoration: none;">Payment</a></li>
-        <li><a href="/notification" style="color: white; text-decoration: none;">Notification</a></li>
+        <li style="position: relative;">
+            <a href="{{ route('notifications.index') }}" style="color: white; text-decoration: none; position: relative;">
+                🔔 Notification
+                @php
+                    $unreadCount = \App\Models\Notification::where('user_id', Auth::id())->where('is_read', false)->count();
+                @endphp
+                @if($unreadCount > 0)
+                <span style="position: absolute; top: -8px; right: -10px; background: #ef4444; color: white; border-radius: 10px; padding: 2px 6px; font-size: 11px; font-weight: bold;">
+                    {{ $unreadCount > 99 ? '99+' : $unreadCount }}
+                </span>
+                @endif
+            </a>
+        </li>
         <li><a href="/profile" style="color: white; text-decoration: none;">My Profile</a></li>
         <a href="{{ route('upload.create') }}" style="color: white; text-decoration: none;">  Document Upload </a>
     </ul>
@@ -26,7 +38,7 @@
 
         <div class="profile-icon">
             @if(Auth::user()->photo)
-            <img src="{{ asset('storage/' . Auth::user()->photo) }}?t={{ time() }}"
+            <img src="{{ asset('images/profile/' . Auth::user()->photo) }}?t={{ time() }}"
                 style="width: 38px; height: 38px; border-radius: 50%; object-fit: cover; border: 2px solid #3b82f6;">
             @else
             <div style="width: 38px; height: 38px; background-color: #3b82f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">
