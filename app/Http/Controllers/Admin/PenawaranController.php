@@ -52,7 +52,6 @@ class PenawaranController extends Controller
             $taxAmount = ($subtotal * $validated['tax_percentage']) / 100;
             $total = $subtotal + $taxAmount;
 
-            // Generate unique quotation number for current year
             $currentYear = date('Y');
             $latestPenawaran = Penawaran::where('quotation_number', 'like', "QOT-{$currentYear}-%")
                 ->orderBy('quotation_number', 'desc')
@@ -78,7 +77,6 @@ class PenawaranController extends Controller
 
             $document->update(['status' => 'quotation_created']);
 
-            // Trigger notification to client
             NotificationHelper::quotationSent(
                 $document->user_id,
                 $penawaran->id,
@@ -108,7 +106,6 @@ class PenawaranController extends Controller
         $penawaran = Penawaran::findOrFail($id);
         $penawaran->update(['status' => 'sent']);
 
-        // Notify client
         NotificationHelper::quotationSent(
             $penawaran->user_id,
             $penawaran->id,
@@ -133,7 +130,6 @@ class PenawaranController extends Controller
             'status' => 'negotiating',
         ]);
 
-        // Notify client about admin counter offer
         NotificationHelper::adminCounterOffer(
             $penawaran->user_id,
             $penawaran->id,
@@ -170,7 +166,6 @@ class PenawaranController extends Controller
 
             $finalTotal = $penawaran->admin_counter_offer ?? $penawaran->total;
 
-            // Generate unique invoice number for current year
             $currentYear = date('Y');
             $latestInvoice = Invoice::where('invoice_number', 'like', "INV-{$currentYear}-%")
                 ->orderBy('invoice_number', 'desc')

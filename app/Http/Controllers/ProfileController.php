@@ -22,31 +22,24 @@ class ProfileController extends Controller
         ]);
     
         $input = $request->only(['name', 'email', 'phone', 'address']);
-    
-        // Handle photo upload
+
         if ($request->hasFile('photo')) {
-            // Delete old photo if exists
             if ($user->photo) {
                 $oldPhotoPath = public_path('images/profile/' . $user->photo);
                 if (File::exists($oldPhotoPath)) {
                     File::delete($oldPhotoPath);
                 }
             }
-            
-            // Create directory if doesn't exist
+
             if (!File::exists(public_path('images/profile'))) {
                 File::makeDirectory(public_path('images/profile'), 0755, true);
             }
-            
-            // Save new photo
+
             $fileName = time() . '_' . $user->id . '.' . $request->photo->extension();
             $request->file('photo')->move(public_path('images/profile'), $fileName);
-            
-            // Add photo to input array
+
             $input['photo'] = $fileName;
         }
-    
-        // Update user with all input data including photo if exists
         $user->update($input);
     
         return redirect()->back()->with('success', 'Profil berhasil diperbarui!');

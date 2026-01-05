@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('type'); // quotation_sent, payment_verified, etc
+            $table->string('type'); 
             $table->string('title');
             $table->text('message');
-            $table->string('link')->nullable(); // Link to related resource
-            $table->json('data')->nullable(); // Additional data if needed
+            $table->string('link')->nullable(); 
+            $table->json('data')->nullable(); 
             $table->boolean('is_read')->default(false);
             $table->timestamps();
             

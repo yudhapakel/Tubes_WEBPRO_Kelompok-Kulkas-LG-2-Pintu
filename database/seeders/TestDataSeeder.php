@@ -19,7 +19,7 @@ class TestDataSeeder extends Seeder
             ]
         );
 
-        echo "✅ Admin: {$admin->email}\n";
+        echo "Admin: {$admin->email}\n";
 
         $client = User::firstOrCreate(
             ['email' => 'client@test.com'],
@@ -30,7 +30,7 @@ class TestDataSeeder extends Seeder
             ]
         );
 
-        echo "✅ Client: {$client->email}\n";
+        echo "Client: {$client->email}\n";
 
         $doc = Document::create([
             'user_id' => $client->id,
@@ -46,8 +46,8 @@ class TestDataSeeder extends Seeder
             'status' => 'pending'
         ]);
 
-        echo "✅ Request created: ID #{$doc->id}\n";
-        echo "\n🎯 Login: admin@admin.com / admin123\n";
-        echo "📍 URL: http://localhost:8000/admin/dashboard\n";
+        echo "Request created: ID #{$doc->id}\n";
+        echo "\n Login: admin@admin.com / admin123\n";
+        echo " URL: http://localhost:8000/admin/dashboard\n";
     }
 }

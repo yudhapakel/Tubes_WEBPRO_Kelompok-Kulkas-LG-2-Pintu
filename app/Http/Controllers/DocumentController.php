@@ -56,13 +56,11 @@ class DocumentController extends Controller
     public function download($id)
     {
         $document = Document::findOrFail($id);
-        
-        // Check if user is owner or admin
+ 
         if (Auth::id() !== $document->user_id && Auth::user()->role !== 'admin') {
             abort(403, 'Unauthorized access to this document');
         }
-        
-        // Check if file exists
+
         if (!Storage::disk('public')->exists($document->file_path)) {
             abort(404, 'File not found');
         }

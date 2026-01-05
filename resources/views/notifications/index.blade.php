@@ -5,7 +5,7 @@
 <div class="container" style="margin-top: 50px; margin-bottom: 80px;">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
         <div>
-            <h2 style="font-weight: 800; color: #2c3e50; margin-bottom: 5px;">🔔 Notifikasi</h2>
+            <h2 style="font-weight: 800; color: #2c3e50; margin-bottom: 5px;">Notifikasi</h2>
             <p style="color: #7f8c8d; margin: 0;">Pantau semua aktivitas dan update terbaru</p>
         </div>
         @if($unreadCount > 0)
@@ -17,7 +17,7 @@
     </div>
 
     @if(session('success'))
-    <div class="alert-success">✅ {{ session('success') }}</div>
+    <div class="alert-success">{{ session('success') }}</div>
     @endif
 
     <div class="notifications-container">
@@ -25,25 +25,25 @@
         <div class="notification-card {{ $notif->is_read ? 'read' : 'unread' }}">
             <div class="notif-icon">
                 @if($notif->type == 'quotation_sent')
-                    📄
+                    <span class="icon-circle" style="background: #3b82f6;">Q</span>
                 @elseif($notif->type == 'quotation_negotiated')
-                    💬
+                    <span class="icon-circle" style="background: #f59e0b;">N</span>
                 @elseif($notif->type == 'quotation_accepted')
-                    ✅
+                    <span class="icon-circle" style="background: #10b981;">A</span>
                 @elseif($notif->type == 'invoice_created')
-                    💳
+                    <span class="icon-circle" style="background: #8b5cf6;">I</span>
                 @elseif($notif->type == 'payment_uploaded')
-                    💰
+                    <span class="icon-circle" style="background: #06b6d4;">P</span>
                 @elseif($notif->type == 'payment_verified')
-                    ✔️
+                    <span class="icon-circle" style="background: #10b981;">V</span>
                 @elseif($notif->type == 'payment_rejected')
-                    ❌
+                    <span class="icon-circle" style="background: #ef4444;">R</span>
                 @elseif($notif->type == 'admin_counter_offer')
-                    🔄
+                    <span class="icon-circle" style="background: #f59e0b;">C</span>
                 @elseif($notif->type == 'new_request')
-                    📥
+                    <span class="icon-circle" style="background: #3b82f6;">N</span>
                 @else
-                    🔔
+                    <span class="icon-circle" style="background: #6366f1;">!</span>
                 @endif
             </div>
             <div class="notif-content">
@@ -65,7 +65,7 @@
         </div>
         @empty
         <div class="empty-state">
-            <div class="empty-icon">🔔</div>
+            <div class="empty-icon"><span class="icon-circle" style="background: #94a3b8; width: 64px; height: 64px; font-size: 32px;">!</span></div>
             <h3>Belum Ada Notifikasi</h3>
             <p>Notifikasi Anda akan muncul di sini</p>
         </div>
@@ -109,6 +109,18 @@
         margin-right: 20px;
         min-width: 50px;
         text-align: center;
+    }
+
+    .icon-circle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
     }
 
     .notif-content {
@@ -185,6 +197,8 @@
         font-size: 64px;
         margin-bottom: 20px;
         opacity: 0.3;
+        display: flex;
+        justify-content: center;
     }
 
     .empty-state h3 {

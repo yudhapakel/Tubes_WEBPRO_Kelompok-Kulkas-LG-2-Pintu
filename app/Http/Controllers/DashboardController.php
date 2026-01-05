@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Kita lempar user ke view dashboard yang baru
         return view('dashboard.index');
     }
 }

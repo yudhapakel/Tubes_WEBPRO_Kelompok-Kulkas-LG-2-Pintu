@@ -15,13 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('invoice_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            
-            // Payment details
-            $table->enum('payment_type', ['full']); // Simplified to full payment only
+
+            $table->enum('payment_type', ['full']); 
             $table->decimal('amount', 12, 2);
-            $table->string('proof_file'); // Path to payment proof image
-            
-            // Verification
+            $table->string('proof_file'); 
+
             $table->enum('status', ['pending', 'verified', 'rejected'])->default('pending');
             $table->foreignId('verified_by')->nullable()->constrained('users');
             $table->timestamp('verified_at')->nullable();

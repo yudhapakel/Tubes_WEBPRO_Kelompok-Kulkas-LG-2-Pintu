@@ -16,7 +16,6 @@ class DemoDataSeeder extends Seeder
     {
         echo "Seeding demo data...\n\n";
 
-        // 1. CREATE USERS
         $admin = User::firstOrCreate(
             ['email' => 'admin@admin.com'],
             [
@@ -53,10 +52,9 @@ class DemoDataSeeder extends Seeder
 
         echo "\n";
 
-        // 2. CREATE DOCUMENT REQUESTS (berbagai status)
         $documents = [];
         
-        // Request 1: Pending (baru masuk, belum ada penawaran)
+
         $doc1 = Document::create([
             'user_id' => $clients[0]->id,
             'nama' => 'PT Maju Jaya',
@@ -74,7 +72,6 @@ class DemoDataSeeder extends Seeder
         $documents[] = $doc1;
         echo "Request 1: Pending (belum ada penawaran)\n";
 
-        // Request 2: Ada penawaran yang dikirim ke client
         $doc2 = Document::create([
             'user_id' => $clients[1]->id,
             'nama' => 'CV Digital Solution',
@@ -107,7 +104,6 @@ class DemoDataSeeder extends Seeder
         ]);
         echo "Request 2: Penawaran sent (menunggu response client)\n";
 
-        // Request 3: Penawaran accepted, siap convert ke invoice
         $doc3 = Document::create([
             'user_id' => $clients[2]->id,
             'nama' => 'PT Enterprise Global',
@@ -140,7 +136,6 @@ class DemoDataSeeder extends Seeder
         ]);
         echo "Request 3: Penawaran accepted (siap convert ke invoice)\n";
 
-        // Request 4: Sudah ada invoice, menunggu payment
         $doc4 = Document::create([
             'user_id' => $clients[0]->id,
             'nama' => 'Startup Innovation',
@@ -184,7 +179,6 @@ class DemoDataSeeder extends Seeder
         ]);
         echo "Request 4: Invoice created (menunggu client bayar)\n";
 
-        // Request 5: Ada payment pending verification
         $doc5 = Document::create([
             'user_id' => $clients[1]->id,
             'nama' => 'Toko Online ABC',

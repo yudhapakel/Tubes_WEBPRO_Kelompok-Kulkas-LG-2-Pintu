@@ -15,20 +15,16 @@ return new class extends Migration
             $table->id();
             $table->foreignId('quotation_id')->constrained('penawarans')->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            
-            // Invoice details
-            $table->string('invoice_number')->unique(); // INV-2025-001
-            $table->json('items'); // Copied from quotation
-            
-            // Pricing (final agreed amount)
+
+            $table->string('invoice_number')->unique(); 
+            $table->json('items'); 
+
             $table->decimal('subtotal', 12, 2);
             $table->decimal('tax_amount', 12, 2);
             $table->decimal('total', 12, 2);
-            
-            // Status (simplified - full payment only)
+
             $table->enum('status', ['pending', 'paid', 'overdue'])->default('pending');
-            
-            // Dates
+
             $table->date('issue_date');
             $table->date('due_date');
             

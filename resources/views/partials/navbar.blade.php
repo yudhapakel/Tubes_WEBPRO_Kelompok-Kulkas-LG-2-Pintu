@@ -15,7 +15,7 @@
         <li><a href="/payment" style="color: white; text-decoration: none;">Payment</a></li>
         <li style="position: relative;">
             <a href="{{ route('notifications.index') }}" style="color: white; text-decoration: none; position: relative;">
-                🔔 Notification
+                Notification
                 @php
                     $unreadCount = \App\Models\Notification::where('user_id', Auth::id())->where('is_read', false)->count();
                 @endphp

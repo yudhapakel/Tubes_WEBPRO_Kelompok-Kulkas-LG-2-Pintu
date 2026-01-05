@@ -18,7 +18,6 @@ class NotificationHelper
         ]);
     }
 
-    // Notification types and templates
     public static function quotationSent($clientId, $quotationId, $quotationNumber)
     {
         return self::create(

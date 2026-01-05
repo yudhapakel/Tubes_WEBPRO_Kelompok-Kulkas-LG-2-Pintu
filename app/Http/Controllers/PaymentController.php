@@ -55,19 +55,16 @@ class PaymentController extends Controller
 
         $penawaran = Penawaran::findOrFail($id);
 
-        // Hanya bisa nego jika status sent atau negotiating
         if (!in_array($penawaran->status, ['sent', 'negotiating'])) {
             return redirect()->back()->with('error', 'Penawaran tidak bisa dinegosiasi saat ini.');
         }
 
-        // Update counter offer dari klien
         $penawaran->update([
             'client_counter_offer' => $validated['client_counter_offer'],
             'client_notes' => $validated['client_notes'],
             'status' => 'negotiating',
         ]);
 
-        // Notify admin
         $admins = \App\Models\User::where('role', 'admin')->get();
         foreach ($admins as $admin) {
             NotificationHelper::quotationNegotiated(

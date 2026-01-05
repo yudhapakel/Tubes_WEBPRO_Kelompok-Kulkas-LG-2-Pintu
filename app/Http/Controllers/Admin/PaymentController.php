@@ -36,18 +36,15 @@ class PaymentController extends Controller
         try {
             $payment = Payment::with('invoice')->findOrFail($id);
 
-            // Update payment status
             $payment->update([
                 'status' => 'verified',
                 'verified_by' => auth()->id(),
                 'verified_at' => now(),
             ]);
 
-            // Update invoice status - direct to PAID (full payment only)
             $invoice = $payment->invoice;
             $invoice->update(['status' => 'paid']);
 
-            // Notify client
             NotificationHelper::paymentVerified(
                 $payment->user_id,
                 $invoice->id,
@@ -80,7 +77,6 @@ class PaymentController extends Controller
             'rejection_reason' => $validated['rejection_reason'],
         ]);
 
-        // Notify client
         NotificationHelper::paymentRejected(
             $payment->user_id,
             $payment->id,

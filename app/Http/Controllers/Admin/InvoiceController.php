@@ -32,7 +32,6 @@ class InvoiceController extends Controller
 
     public function download($id)
     {
-        // TODO: Implement PDF generation
         return back()->with('info', 'PDF download akan ditambahkan.');
     }
 }

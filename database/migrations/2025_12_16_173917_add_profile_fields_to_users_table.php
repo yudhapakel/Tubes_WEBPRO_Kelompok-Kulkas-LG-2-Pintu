@@ -18,14 +18,12 @@ return new class extends Migration
             if (!Schema::hasColumn('users', 'photo')) {
                 $table->string('photo')->nullable()->after('address');
             }
-            // Kolom 'role' tidak perlu ditambah karena sudah ada
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            // Menghapus kolom jika migration di-rollback
             $table->dropColumn(['phone', 'address', 'photo', 'role']);
         });
     }
